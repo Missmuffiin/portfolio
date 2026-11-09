@@ -1,0 +1,1795 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Magdalena A. Gil aka Bl4ckmuffin — Pentester</title>
+<meta name="description" content="Magdalena A. Gil aka Bl4ckmuffin — pentester especializada en seguridad web y APIs, auditoría WiFi, simulación de smishing y seguridad en modelos de lenguaje.">
+<link rel="icon" type="image/webp" href="avatar.webp">
+<link rel="apple-touch-icon" href="avatar.webp">
+<meta name="theme-color" content="#0b1020">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Magdalena A. Gil aka Bl4ckmuffin — Pentester">
+<meta property="og:description" content="Pentester especializada en seguridad web y APIs, auditoría WiFi, smishing, OSINT y seguridad en modelos de lenguaje.">
+<meta property="og:image" content="https://missmuffiin.github.io/portfolio/portrait.webp">
+<meta property="og:url" content="https://missmuffiin.github.io/portfolio/">
+<meta name="twitter:card" content="summary">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ═════════════════════════════════════════════════════════════
+   BL4CKMUFFIN 2.0 — LIQUID GLASS
+   ═════════════════════════════════════════════════════════════ */
+@property --ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
+
+:root {
+  --bg: #05070f;
+  --ink: #edf1fb;
+  --text: #9ba7be;
+  --dim: #66728b;
+  --cyan: #00d9ff;
+  --magenta: #ff006e;
+  --purple: #b837eb;
+  --pink: #ff7ac8;
+  --lilac: #8b7bff;
+  --line: rgba(255,255,255,.1);
+  --r-xl: 32px; --r-lg: 26px; --r-md: 20px; --r-sm: 14px;
+  --ease: cubic-bezier(.16,1,.3,1);
+  --io: cubic-bezier(.65,0,.35,1);
+  --iri: conic-gradient(from var(--ang), #00d9ff, #8b7bff, #ff4fae, #ffb4e6, #6ff3ff, #00d9ff);
+  color-scheme: dark;
+}
+/* siempre oscuro: el contenedor puede inyectar data-theme="light" */
+:root, :root[data-theme="light"], :root[data-theme="dark"] { color-scheme: dark !important; }
+html, body { background: var(--bg) !important; color: var(--ink) !important; }
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { overflow-x: clip; scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 96px); }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+button, input, textarea, select { font: inherit; color: inherit; }
+button { cursor: pointer; }
+.wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+.mono { font-family: 'Fira Code', monospace; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+a, button, input, textarea, select, .g { -webkit-tap-highlight-color: transparent; }
+:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; border-radius: 10px; }
+
+/* ── FONDO: aurora + red + grano ── */
+.aurora {
+  position: fixed; inset: -20%; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(38% 34% at 18% 22%, rgba(0,217,255,.16), transparent 70%),
+    radial-gradient(34% 32% at 82% 30%, rgba(184,55,235,.17), transparent 70%),
+    radial-gradient(40% 36% at 62% 82%, rgba(255,0,110,.12), transparent 72%),
+    radial-gradient(30% 28% at 24% 78%, rgba(139,123,255,.12), transparent 70%);
+  filter: blur(30px);
+  animation: aurora 26s ease-in-out infinite alternate;
+}
+@keyframes aurora {
+  0%   { transform: translate3d(0,0,0) rotate(0deg) scale(1); }
+  50%  { transform: translate3d(3%,-2%,0) rotate(6deg) scale(1.06); }
+  100% { transform: translate3d(-3%,2%,0) rotate(-4deg) scale(1.02); }
+}
+#net { position: fixed; inset: 0; z-index: 0; pointer-events: none; opacity: .55; }
+.grain { position: fixed; inset: -150px; z-index: 1; pointer-events: none; opacity: .04; animation: grain .6s steps(1) infinite; }
+@keyframes grain {
+  0%{transform:translate(0,0)} 25%{transform:translate(-5%,3%)} 50%{transform:translate(4%,-4%)} 75%{transform:translate(-3%,-3%)} 100%{transform:translate(0,0)}
+}
+main, nav, footer { position: relative; z-index: 2; }
+
+/* ══════════ COMPONENTE BASE: CRISTAL LÍQUIDO ══════════ */
+.g {
+  position: relative;
+  border-radius: var(--r-lg);
+  background:
+    linear-gradient(155deg, rgba(255,255,255,.095), rgba(255,255,255,.025) 48%, rgba(255,255,255,.045));
+  backdrop-filter: blur(24px) saturate(160%);
+  -webkit-backdrop-filter: blur(24px) saturate(160%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.2),
+    inset 0 -1px 0 rgba(255,255,255,.04),
+    0 30px 70px -24px rgba(0,0,0,.75);
+  isolation: isolate;
+}
+/* borde iridiscente que gira */
+.g::before {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; padding: 1px;
+  background: var(--iri);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  opacity: .5; pointer-events: none; z-index: 2;
+  animation: spin 9s linear infinite;
+}
+/* reflejo especular */
+.g::after {
+  content: ''; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; z-index: 0;
+  background: radial-gradient(120% 70% at 12% -10%, rgba(255,255,255,.13), transparent 52%);
+}
+.g.hot::before { opacity: .95; }
+.g.soft::before { opacity: .28; }
+@keyframes spin { to { --ang: 360deg; } }
+
+/* ══════════ BOTONES PÍLDORA ══════════ */
+.btn {
+  position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 9px;
+  height: 48px; padding: 0 24px; border: 0; border-radius: 999px;
+  font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: .9rem; letter-spacing: .01em;
+  text-decoration: none; white-space: nowrap; overflow: hidden;
+  transition: transform .35s var(--ease), box-shadow .35s, filter .3s, opacity .3s;
+}
+.btn svg { width: 17px; height: 17px; }
+.btn-primary {
+  color: #04111c;
+  background: linear-gradient(95deg, #46f2ff 0%, #00c4ff 28%, #8b7bff 64%, #ff4fae 100%);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.65),
+    inset 0 0 0 1px rgba(255,255,255,.25),
+    0 12px 30px -8px rgba(0,217,255,.6),
+    0 8px 30px -10px rgba(255,0,110,.55);
+}
+.btn-glass {
+  color: var(--ink);
+  background: linear-gradient(180deg, rgba(255,255,255,.13), rgba(255,255,255,.035));
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.22),
+    inset 0 0 0 1.2px rgba(184,55,235,.55),
+    0 0 26px -8px rgba(184,55,235,.75);
+}
+.btn::after {
+  content: ''; position: absolute; top: 0; left: -130%; width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.45), transparent);
+  transition: left .8s var(--io);
+}
+.btn:hover { transform: translateY(-2px); }
+.btn:hover::after { left: 140%; }
+.btn-primary:hover { filter: brightness(1.08); }
+.btn:disabled { opacity: .45; filter: grayscale(.6); transform: none; box-shadow: none; }
+.btn-icon { width: 48px; padding: 0; }
+
+/* ══════════ NAV FLOTANTE ══════════ */
+nav.top {
+  position: fixed; left: 50%; top: calc(env(safe-area-inset-top, 0px) + 14px);
+  transform: translateX(-50%); z-index: 50;
+  width: min(1120px, 100% - 24px);
+  display: flex; align-items: center; gap: 14px;
+  padding: 8px 8px 8px 20px; border-radius: 999px;
+}
+nav.top .logo {
+  font-family: 'Fira Code', monospace; font-weight: 600; font-size: .86rem;
+  color: var(--magenta); text-decoration: none; white-space: nowrap; position: relative; z-index: 3;
+}
+.nav-links {
+  display: flex; gap: 4px; margin-left: auto; position: relative; z-index: 3; min-width: 0;
+  overflow-x: auto; scrollbar-width: none;
+}
+.nav-links::-webkit-scrollbar { display: none; }
+.nav-links a {
+  position: relative; padding: 9px 15px; border-radius: 999px;
+  font-family: 'Fira Code', monospace; font-size: .74rem; color: var(--text);
+  text-decoration: none; white-space: nowrap; transition: color .25s, background .25s;
+}
+.nav-links a:hover { color: var(--ink); background: rgba(255,255,255,.06); }
+.nav-links a.on { color: var(--ink); background: rgba(0,217,255,.1); box-shadow: inset 0 0 0 1px rgba(0,217,255,.35); }
+.nav-links a.on::after {
+  content: ''; position: absolute; left: 50%; bottom: -1px; width: 18px; height: 2px;
+  transform: translateX(-50%); border-radius: 2px; background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+}
+.nav-av {
+  width: 38px; height: 38px; border-radius: 50%; flex: 0 0 auto; position: relative; z-index: 3;
+  padding: 2px; background: var(--iri); animation: spin 6s linear infinite;
+}
+.nav-av > span { width: 100%; height: 100%; border-radius: 50%; display: grid; place-items: center; background: #0b1020; color: var(--ink); transition: color .25s, background .25s; }
+.nav-av svg { width: 17px; height: 17px; }
+.nav-av:hover > span { color: var(--cyan); background: #101a30; }
+
+/* selector de idioma */
+.lang-sw { position: relative; z-index: 4; flex: 0 0 auto; }
+.lang-btn {
+  height: 38px; padding: 0 12px; border-radius: 999px; display: flex; align-items: center; gap: 6px;
+  font-family: 'Fira Code', monospace; font-size: .72rem; font-weight: 600; color: var(--ink);
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.14); cursor: pointer;
+  transition: background .25s, border-color .25s, color .25s;
+}
+.lang-btn svg { width: 15px; height: 15px; color: var(--cyan); }
+.lang-btn:hover, .lang-btn[aria-expanded="true"] { background: rgba(0,217,255,.1); border-color: rgba(0,217,255,.45); }
+.lang-menu {
+  position: absolute; right: 0; top: calc(100% + 10px); min-width: 168px; padding: 6px;
+  display: grid; gap: 2px; border-radius: 16px;
+  background: rgba(11,16,32,.96); border: 1px solid rgba(255,255,255,.12);
+  box-shadow: 0 18px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(139,123,255,.12), 0 0 30px rgba(0,217,255,.12);
+  animation: langIn .18s ease-out;
+}
+.lang-menu[hidden] { display: none; }
+@keyframes langIn { from { opacity: 0; transform: translateY(-6px); } }
+.lang-menu button {
+  display: flex; align-items: center; gap: 10px; width: 100%; padding: 9px 12px; border-radius: 10px;
+  font: inherit; font-size: .86rem; color: var(--text); text-align: left; background: none; border: 0; cursor: pointer;
+}
+.lang-menu button b { font-family: 'Fira Code', monospace; font-size: .7rem; color: var(--cyan); width: 22px; }
+.lang-menu button:hover, .lang-menu button:focus-visible { background: rgba(255,255,255,.07); color: var(--ink); outline: none; }
+.lang-menu button[aria-checked="true"] { color: var(--ink); background: rgba(0,217,255,.1); box-shadow: inset 0 0 0 1px rgba(0,217,255,.3); }
+
+/* ══════════ HERO ══════════ */
+.hero { padding: calc(env(safe-area-inset-top, 0px) + 130px) 0 60px; }
+.hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 40px; align-items: center; }
+.kicker {
+  display: inline-flex; align-items: center; gap: 9px;
+  padding: 7px 14px 7px 10px; border-radius: 999px; margin-bottom: 22px;
+  font-family: 'Fira Code', monospace; font-size: .72rem; color: var(--text);
+}
+.kicker i { width: 8px; height: 8px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 10px var(--cyan); animation: pulse 2s infinite; position: relative; z-index: 3; }
+.kicker span { position: relative; z-index: 3; }
+@keyframes pulse { 50% { opacity: .35; } }
+.hero h1 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700;
+  font-size: clamp(2.5rem, 6.6vw, 4.5rem); line-height: 1; letter-spacing: -.035em;
+  background: linear-gradient(95deg, #46f2ff 0%, #8b7bff 45%, #ff4fae 78%, #ff006e 100%);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 14px;
+}
+.hero h2 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 600;
+  font-size: clamp(1.15rem, 2.6vw, 1.5rem); color: var(--ink); margin-bottom: 16px;
+}
+.hero p.lead { color: var(--text); font-size: 1.04rem; max-width: 520px; margin-bottom: 30px; }
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.aka { font-family: 'Fira Code', monospace; font-size: clamp(.95rem, 2vw, 1.15rem); color: var(--ink); margin: 2px 0 18px; }
+.aka span { color: var(--magenta); }
+
+/* visual: personaje + tarjeta de perfil de cristal */
+.hero-visual { position: relative; min-height: 600px; perspective: 1200px; }
+.hero-orb {   /* retrato + halo + anillo: se mueven juntos con el parallax */
+  position: absolute; left: 50%; top: 50%; translate: -50% -50%; z-index: 1;
+  width: min(520px, 96%); aspect-ratio: 1; pointer-events: none; will-change: transform;
+}
+.hero-orb::before {   /* halo iridiscente */
+  content: ''; position: absolute; inset: 0; border-radius: 50%;
+  background: var(--iri); filter: blur(46px); opacity: .5;
+  animation: spin 9s linear infinite;
+}
+.hero-orb::after {   /* anillo fino girando */
+  content: ''; position: absolute; inset: 2%; border-radius: 50%; padding: 2px;
+  background: var(--iri); opacity: .75;
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor; mask-composite: exclude;
+  animation: spin 6s linear infinite reverse;
+}
+.hero-char {
+  position: absolute; inset: 0; margin: auto; z-index: 1;
+  width: 88%; height: 88%; border-radius: 50%;
+  filter: drop-shadow(0 18px 40px rgba(0,0,0,.55)) drop-shadow(0 0 28px rgba(139,123,255,.35));
+}
+@keyframes bob { 0%,100% { transform: translateY(0) rotate(-3deg); } 50% { transform: translateY(-14px) rotate(3deg); } }
+
+/* ══════════ CABECERAS DE SECCIÓN ══════════ */
+section { padding: 90px 0; overflow-x: clip; }   /* lo decorativo no ensancha la página */
+.sh { text-align: center; max-width: 640px; margin: 0 auto 42px; }
+.sh .tag {
+  display: inline-block; margin-bottom: 14px; padding: 6px 14px; border-radius: 999px;
+  font-family: 'Fira Code', monospace; font-size: .68rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--cyan); background: rgba(0,217,255,.08); box-shadow: inset 0 0 0 1px rgba(0,217,255,.28);
+}
+.sh h2 {
+  font-family: 'Space Grotesk', sans-serif; font-weight: 700; letter-spacing: -.02em;
+  font-size: clamp(1.9rem, 4.6vw, 2.9rem); line-height: 1.08; margin-bottom: 14px;
+}
+.sh p { color: var(--text); }
+
+/* ══════════ ÁREAS: componentes ══════════ */
+.switch {
+  display: inline-flex; align-items: center; gap: 12px; height: 54px; padding: 0 10px 0 20px; border-radius: 999px;
+  font-family: 'Fira Code', monospace; font-size: .76rem; color: var(--ink); user-select: none; cursor: pointer;
+}
+.switch > * { position: relative; z-index: 3; }
+.switch input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.track {
+  width: 62px; height: 34px; border-radius: 999px; position: relative; flex: 0 0 auto;
+  background: rgba(255,255,255,.05);
+  box-shadow: inset 0 0 0 1.6px rgba(0,217,255,.7), 0 0 18px -4px rgba(0,217,255,.7);
+  transition: background .35s;
+}
+.track::after {
+  content: ''; position: absolute; top: 4px; left: 4px; width: 26px; height: 26px; border-radius: 50%;
+  background: linear-gradient(180deg, #fff, #d9e2f2);
+  box-shadow: 0 4px 10px rgba(0,0,0,.45);
+  transition: transform .4s var(--ease);
+}
+.switch input:checked + .track { background: linear-gradient(90deg, rgba(0,217,255,.45), rgba(139,123,255,.4)); }
+.switch input:checked + .track::after { transform: translateX(28px); }
+.switch input:focus-visible + .track { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+/* anillo de progreso con degradado */
+.ring { position: relative; width: 132px; height: 132px; margin: 0 auto; }
+.ring-glow { position: absolute; inset: 0; filter: drop-shadow(0 0 12px rgba(0,217,255,.55)) drop-shadow(0 0 22px rgba(255,79,174,.35)); }
+.ring-arc {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from var(--ang), #46f2ff, #8b7bff, #ff4fae, #ffb86b, #46f2ff);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 13px), #000 calc(100% - 12px));
+  mask: radial-gradient(farthest-side, transparent calc(100% - 13px), #000 calc(100% - 12px));
+  animation: spin 7s linear infinite;
+}
+.ring-core {
+  position: absolute; inset: 22px; border-radius: 50%; display: grid; place-items: center; text-align: center;
+  background: radial-gradient(circle at 35% 30%, rgba(255,255,255,.16), rgba(255,255,255,.03) 60%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.25), inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.ring-core b { display: block; font-family: 'Space Grotesk', sans-serif; font-size: 1.9rem; line-height: 1; }
+.ring-core span { font-family: 'Fira Code', monospace; font-size: .6rem; letter-spacing: .08em; text-transform: uppercase; color: var(--text); }
+
+.steps { list-style: none; margin-top: 20px; display: grid; gap: 10px; counter-reset: s; }
+.steps li { display: grid; grid-template-columns: 26px 1fr; gap: 10px; font-size: .84rem; color: var(--text); }
+.steps li::before {
+  counter-increment: s; content: counter(s);
+  width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+  font-family: 'Fira Code', monospace; font-size: .68rem; color: var(--ink);
+  background: linear-gradient(135deg, rgba(0,217,255,.28), rgba(255,79,174,.22));
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.18);
+}
+.steps b { color: var(--ink); font-weight: 600; display: block; }
+
+.cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.acard {
+  display: block; text-decoration: none; color: inherit;
+  padding: 22px; border-radius: var(--r-md); transform-style: preserve-3d;
+  transition: transform .5s var(--ease), box-shadow .4s;
+}
+.acard > * { position: relative; z-index: 3; }
+.acard.tilt { transition: transform .12s linear, box-shadow .4s; }
+.acard:hover::before { opacity: .95; }
+.ico {
+  width: 44px; height: 44px; border-radius: 13px; display: grid; place-items: center; margin-bottom: 16px;
+  background: linear-gradient(180deg, #fff, #dfe7f6); color: #0a1830;
+  box-shadow: 0 8px 20px -6px rgba(0,217,255,.6), inset 0 -2px 0 rgba(0,0,0,.08);
+}
+.ico svg { width: 21px; height: 21px; }
+.acard:nth-child(3n+2) .ico { box-shadow: 0 8px 20px -6px rgba(139,123,255,.7), inset 0 -2px 0 rgba(0,0,0,.08); }
+.acard:nth-child(3n+3) .ico { box-shadow: 0 8px 20px -6px rgba(255,79,174,.6), inset 0 -2px 0 rgba(0,0,0,.08); }
+.acard h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.04rem; margin-bottom: 6px; }
+.acard p { font-size: .85rem; color: var(--text); }
+.acard .chip {
+  display: inline-block; margin-top: 14px; padding: 3px 10px; border-radius: 999px;
+  font-family: 'Fira Code', monospace; font-size: .62rem; color: var(--pink);
+  background: rgba(255,79,174,.1); box-shadow: inset 0 0 0 1px rgba(255,79,174,.3);
+}
+.acard mark { background: rgba(0,217,255,.28); color: var(--ink); border-radius: 4px; padding: 0 2px; }
+
+.term { margin-top: 14px; border-radius: var(--r-md); overflow: hidden; display: none; }
+.term.on { display: block; animation: panelIn .5s var(--ease); }
+.term-bar { display: flex; gap: 7px; padding: 12px 16px; position: relative; z-index: 3; border-bottom: 1px solid var(--line); }
+.term-bar i { width: 10px; height: 10px; border-radius: 50%; background: #ff5f7a; }
+.term-bar i:nth-child(2) { background: #ffc35f; }
+.term-bar i:nth-child(3) { background: #3ff0a0; }
+.term pre {
+  position: relative; z-index: 3; margin: 0; padding: 16px 18px; overflow-x: auto;
+  font-family: 'Fira Code', monospace; font-size: .76rem; line-height: 1.8; color: #c9d4ea;
+}
+.term pre .c { color: var(--dim); }
+.term pre .p { color: var(--cyan); }
+
+/* ══════════ VISTAS ══════════ */
+.view { display: none; }
+.view.on { display: block; animation: viewIn .75s var(--ease); }
+@keyframes viewIn { from { opacity: 0; transform: translateY(18px); filter: blur(6px); } to { opacity: 1; transform: none; filter: none; } }
+.page { padding-top: calc(env(safe-area-inset-top, 0px) + 128px); min-height: 100vh; }
+.hero.view.on { min-height: 100vh; display: flex; align-items: center; }
+.hero > .wrap { width: min(1120px, 100% - 40px); }
+
+/* accesos a las áreas en la portada */
+.hero-areas { margin-top: 4px; }
+.hero-areas > .mono { display: block; font-size: .64rem; letter-spacing: .12em; text-transform: uppercase; color: var(--dim); margin-bottom: 10px; }
+.area-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip-a {
+  display: inline-flex; align-items: center; gap: 9px; height: 44px; padding: 0 16px; border-radius: 999px;
+  font-family: 'Fira Code', monospace; font-size: .76rem; color: var(--ink); text-decoration: none;
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.14), inset 0 0 0 1px rgba(255,255,255,.08);
+  transition: transform .35s var(--ease), box-shadow .35s, background .35s;
+}
+.chip-a svg { width: 17px; height: 17px; color: var(--cyan); }
+.chip-a:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(180deg, rgba(0,217,255,.18), rgba(0,217,255,.04));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2), inset 0 0 0 1.4px rgba(0,217,255,.7), 0 0 24px -6px rgba(0,217,255,.7);
+}
+
+/* índice de áreas */
+.aidx { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 16px; }
+.aidx-card {
+  display: flex; flex-direction: column; padding: 26px; border-radius: var(--r-lg);
+  text-decoration: none; color: inherit; transition: transform .45s var(--ease), box-shadow .4s;
+}
+.aidx-card > * { position: relative; z-index: 3; }
+.aidx-card:hover { transform: translateY(-4px); }
+.aidx-card:hover::before { opacity: .95; }
+.aidx-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+.aidx-top .ico { margin-bottom: 0; }
+.aidx-num { font-family: 'Fira Code', monospace; font-size: .66rem; color: var(--dim); letter-spacing: .08em; }
+.aidx-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; line-height: 1.25; margin-bottom: 8px; }
+.aidx-card p { color: var(--text); font-size: .9rem; flex: 1; }
+.aidx-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 20px; font-family: 'Fira Code', monospace; font-size: .72rem; }
+.aidx-foot .n { color: var(--text); }
+.aidx-foot .go { color: var(--cyan); display: inline-flex; align-items: center; gap: 6px; transition: gap .3s var(--ease); }
+.aidx-foot .go svg { width: 15px; height: 15px; }
+.aidx-card:hover .aidx-foot .go { gap: 10px; }
+.aidx-card.soon, .aidx-card.soon.rv.in { opacity: .5; }
+.aidx-card.soon .go { color: var(--pink); }
+
+/* detalle de área */
+.back {
+  display: inline-flex; align-items: center; gap: 8px; margin-bottom: 18px;
+  font-family: 'Fira Code', monospace; font-size: .74rem; color: var(--text); text-decoration: none; transition: color .25s, gap .3s var(--ease);
+}
+.back:hover { color: var(--cyan); gap: 12px; }
+.back svg { width: 15px; height: 15px; }
+.ad-head { display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center; padding: 32px; border-radius: var(--r-xl); margin-bottom: 40px; }
+.ad-head > * { position: relative; z-index: 3; }
+.ad-head .tag {
+  display: inline-block; margin-bottom: 10px; padding: 5px 12px; border-radius: 999px;
+  font-family: 'Fira Code', monospace; font-size: .64rem; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--cyan); background: rgba(0,217,255,.08); box-shadow: inset 0 0 0 1px rgba(0,217,255,.28);
+}
+.ad-head h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.7rem, 4vw, 2.5rem); line-height: 1.1; letter-spacing: -.02em; margin-bottom: 10px; }
+.ad-head p { color: var(--text); max-width: 620px; }
+.blk { margin-bottom: 40px; }
+.blk-head { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 16px; flex-wrap: wrap; }
+.blk-head .col-title { margin: 0; }
+.switch { height: 46px; }
+.stepper { list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 12px; counter-reset: st; }
+.stepper li { padding: 20px; border-radius: var(--r-md); }
+.stepper li > * { position: relative; z-index: 3; }
+.stepper li::after { content: none; }
+.st-n {
+  width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; margin-bottom: 12px;
+  font-family: 'Fira Code', monospace; font-size: .72rem;
+  background: linear-gradient(135deg, rgba(0,217,255,.35), rgba(255,79,174,.3)); box-shadow: inset 0 0 0 1px rgba(255,255,255,.2);
+}
+.stepper h4 { font-family: 'Space Grotesk', sans-serif; font-size: .98rem; margin-bottom: 6px; }
+.stepper p { font-size: .82rem; color: var(--text); }
+.pager { display: flex; justify-content: space-between; gap: 12px; margin-top: 56px; flex-wrap: wrap; }
+
+/* ══════════ ROL CON EFECTO TECLEO ══════════ */
+.typed {
+  background: linear-gradient(95deg, #46f2ff, #8b7bff 60%, #ff4fae);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.caret { display: inline-block; width: 2px; height: 1em; margin-left: 3px; vertical-align: -.12em; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+
+/* ══════════ PERFIL ══════════ */
+.pc-av {
+  width: 82px; height: 82px; flex: 0 0 auto; border-radius: 50%; padding: 3px;
+  background: var(--iri); animation: spin 5s linear infinite;
+  box-shadow: 0 0 24px rgba(0,217,255,.45), 0 0 34px rgba(255,79,174,.3);
+}
+.pc-av img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid #0b1020; }
+.about { display: grid; grid-template-columns: 1fr; gap: 18px; margin-bottom: 34px; }
+.about-txt { padding: 34px; }
+.about-txt > * { position: relative; z-index: 3; }
+.about-head { display: flex; align-items: center; gap: 18px; margin-bottom: 22px; }
+.about-head h3 {
+  font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; line-height: 1.1;
+  background: linear-gradient(95deg, #46f2ff, #8b7bff 55%, #ff4fae); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.about-head .role { font-size: .74rem; color: var(--text); }
+.about-txt p { color: var(--text); margin-bottom: 12px; }
+.about-txt p:last-child { margin-bottom: 0; }
+.stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.stat { padding: 24px 20px; border-radius: var(--r-md); display: flex; flex-direction: column; justify-content: center; }
+.stat > * { position: relative; z-index: 3; }
+.stat b {
+  font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.35rem, 2.6vw, 1.75rem); line-height: 1.1; margin-bottom: 6px;
+  background: linear-gradient(95deg, #46f2ff, #8b7bff 60%, #ff4fae); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+.stat span { font-size: .78rem; color: var(--text); }
+
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; }
+.skill { padding: 22px; border-radius: var(--r-md); }
+.skill > * { position: relative; z-index: 3; }
+.skill h4 {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+  font-family: 'Fira Code', monospace; font-size: .7rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan);
+}
+.skill h4 svg { width: 16px; height: 16px; }
+.skill:nth-child(2) h4 { color: var(--lilac); }
+.skill:nth-child(3) h4 { color: var(--pink); }
+.skill:nth-child(4) h4 { color: var(--purple); }
+.chips { display: flex; flex-wrap: wrap; gap: 7px; }
+.chips span {
+  padding: 5px 12px; border-radius: 999px; font-size: .78rem; color: var(--ink);
+  background: linear-gradient(180deg, rgba(255,255,255,.09), rgba(255,255,255,.025));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 0 0 1px rgba(255,255,255,.08);
+}
+
+/* ══════════ TRAYECTORIA ══════════ */
+.tl-grid { display: grid; grid-template-columns: 1.35fr .65fr; gap: 26px; align-items: start; }
+.tl-grid.solo { grid-template-columns: 1fr; max-width: 820px; margin-inline: auto; }
+.col-title { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: var(--cyan); margin-bottom: 14px; font-weight: 500; }
+.tl { list-style: none; position: relative; padding-left: 34px; display: grid; gap: 16px; }
+.tl::before {
+  content: ''; position: absolute; left: 9px; top: 12px; bottom: 12px; width: 2px; border-radius: 2px;
+  background: linear-gradient(180deg, var(--cyan), var(--lilac) 55%, var(--pink));
+  box-shadow: 0 0 12px rgba(0,217,255,.45);
+}
+.tl-item { padding: 24px; border-radius: var(--r-md); }
+.tl-item > * { position: relative; z-index: 3; }
+.tl-dot {
+  position: absolute !important; left: -32px; top: 28px; width: 18px; height: 18px; border-radius: 50%;
+  background: var(--bg); box-shadow: inset 0 0 0 3px var(--cyan), 0 0 14px rgba(0,217,255,.75);
+}
+.tl-item:nth-child(2) .tl-dot { box-shadow: inset 0 0 0 3px var(--lilac), 0 0 14px rgba(139,123,255,.75); }
+.tl-item:nth-child(3) .tl-dot { box-shadow: inset 0 0 0 3px var(--pink), 0 0 14px rgba(255,79,174,.75); }
+.tl-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 4px; }
+.tl-item h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1.12rem; }
+.when {
+  padding: 3px 11px; border-radius: 999px; font-family: 'Fira Code', monospace; font-size: .64rem; white-space: nowrap;
+  color: var(--cyan); background: rgba(0,217,255,.1); box-shadow: inset 0 0 0 1px rgba(0,217,255,.35);
+}
+.when.curso { color: var(--pink); background: rgba(255,79,174,.1); box-shadow: inset 0 0 0 1px rgba(255,79,174,.35); }
+.org { font-family: 'Fira Code', monospace; font-size: .74rem; color: var(--lilac); margin-bottom: 10px; }
+.tl-item p { color: var(--text); font-size: .88rem; margin-bottom: 12px; }
+.tl-item .chips span { font-size: .72rem; padding: 4px 10px; }
+
+.certs { display: grid; gap: 12px; }
+.cert { display: flex; align-items: center; gap: 16px; padding: 18px; border-radius: var(--r-md); }
+.cert > * { position: relative; z-index: 3; }
+.cert-ring { width: 56px; height: 56px; flex: 0 0 auto; border-radius: 50%; padding: 3px; background: conic-gradient(from var(--ang), #46f2ff, #8b7bff, #ff4fae, #46f2ff); animation: spin 6s linear infinite; }
+.cert-ring span { width: 100%; height: 100%; border-radius: 50%; display: grid; place-items: center; background: #0b1020; color: var(--ink); }
+.cert-ring svg { width: 22px; height: 22px; }
+.cert-ring span.mono { font-size: .6rem; font-weight: 600; letter-spacing: .02em; }
+.cert-ring { width: 62px; height: 62px; }
+.cert h4 { font-family: 'Space Grotesk', sans-serif; font-size: .98rem; line-height: 1.25; }
+.cert small { display: block; font-size: .74rem; color: var(--text); margin: 2px 0 7px; }
+
+/* idiomas */
+.langs { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+.lang { padding: 18px 20px; border-radius: var(--r-md); display: flex; align-items: baseline; justify-content: space-between; gap: 10px; }
+.lang > * { position: relative; z-index: 3; }
+.lang b { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; }
+.lang span { font-size: .76rem; color: var(--text); text-align: right; }
+
+/* ══════════ ENCUÉNTRAME ══════════ */
+.socials { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+
+footer { padding: 40px 0 50px; text-align: center; font-family: 'Fira Code', monospace; font-size: .72rem; color: var(--dim); }
+footer b { color: var(--magenta); font-weight: 500; }
+
+/* ══════════ ARRANQUE ══════════ */
+#boot {
+  position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; background: var(--bg);
+  transition: opacity .8s var(--io), visibility .8s;
+}
+#boot.done { opacity: 0; visibility: hidden; }
+.boot-in { width: min(420px, 84vw); font-family: 'Fira Code', monospace; }
+#bootLog { font-size: .74rem; line-height: 1.9; color: var(--cyan); min-height: 7.6em; white-space: pre-wrap; text-shadow: 0 0 8px rgba(0,217,255,.5); }
+#bootLog b { color: var(--pink); font-weight: 500; }
+.boot-bar { height: 3px; border-radius: 3px; margin-top: 16px; background: rgba(255,255,255,.07); overflow: hidden; }
+.boot-bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #46f2ff, #8b7bff, #ff4fae); box-shadow: 0 0 12px rgba(0,217,255,.8); transition: width 1.2s cubic-bezier(.5,.05,.2,1); }
+.boot-skip { margin-top: 12px; text-align: right; font-size: .6rem; color: var(--dim); }
+
+/* ══════════ CURSOR RETÍCULO (solo escritorio) ══════════ */
+/* el nativo solo se oculta cuando el retículo ya está funcionando:
+   así nunca puede quedarse la página sin puntero */
+html.has-cur, html.has-cur * { cursor: none !important; }
+.cur { display: none; position: fixed; top: 0; left: 0; z-index: 200; pointer-events: none; will-change: translate; opacity: 0; transition: opacity .2s; }
+html.has-cur .cur { display: block; }
+html.has-cur.cur-in .cur { opacity: 1; }
+#curDot { width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 4px var(--cyan), 0 0 12px rgba(0,217,255,.9); transition: background .18s, box-shadow .18s, scale .15s; }
+#curRing { width: 42px; height: 42px; margin: -21px 0 0 -21px; transition: width .25s var(--ease), height .25s var(--ease), margin .25s var(--ease); }
+#curRing svg { width: 100%; height: 100%; overflow: visible; }
+#curRing .rot { transform-origin: 50% 50%; animation: spinz 6s linear infinite; }
+#curRing .br { transform-origin: 50% 50%; transition: transform .25s var(--ease), stroke .2s; }
+#curRing .x { transition: opacity .2s; }
+body.lock #curDot { background: var(--pink); box-shadow: 0 0 5px var(--pink), 0 0 16px rgba(255,79,174,.95); scale: 1.5; }
+body.lock #curRing { width: 62px; height: 62px; margin: -31px 0 0 -31px; }
+body.lock #curRing .br { transform: scale(.76); stroke: var(--pink); }
+body.lock #curRing .arc { stroke: var(--pink); }
+body.lock #curRing .x { opacity: 0; }
+body.down #curRing { width: 30px; height: 30px; margin: -15px 0 0 -15px; }
+
+.scroll-bar { position: fixed; top: 0; left: 0; z-index: 60; height: 2px; width: 100%; transform: scaleX(0); transform-origin: 0 50%; background: linear-gradient(90deg, #46f2ff, #8b7bff, #ff4fae); box-shadow: 0 0 10px rgba(0,217,255,.7); }
+
+/* ══════════ REVEALS ══════════ */
+.rv { opacity: 0; transform: translate3d(0, 24px, 0); filter: blur(3px); transition: opacity .6s var(--ease) var(--d, 0ms), transform .75s var(--ease) var(--d, 0ms), filter .5s var(--ease) var(--d, 0ms); }
+.rv.in { opacity: 1; transform: none; filter: none; }
+
+/* ══════════ ASISTENTE IA ══════════ */
+.ai-fab {
+  position: fixed; right: 22px; bottom: calc(env(safe-area-inset-bottom, 0px) + 22px); z-index: 80;
+  width: 62px; height: 62px; border: 0; border-radius: 50%; padding: 3px;
+  background: var(--iri); animation: spin 6s linear infinite;
+  box-shadow: 0 12px 34px -8px rgba(0,217,255,.7), 0 8px 30px -10px rgba(255,79,174,.6);
+  transition: transform .35s var(--ease), opacity .3s;
+}
+.ai-fab[hidden] { display: none; }
+.ai-fab:hover { transform: translateY(-3px) scale(1.04); }
+.ai-fab img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #0b1020; }
+.ai-fab .ping { position: absolute; top: 2px; right: 2px; width: 13px; height: 13px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 0 3px #0b1020, 0 0 12px var(--cyan); }
+.ai-fab.open { opacity: 0; pointer-events: none; transform: scale(.8); }
+
+.ai-panel {
+  position: fixed; right: 22px; bottom: calc(env(safe-area-inset-bottom, 0px) + 22px); z-index: 81;
+  width: min(390px, calc(100vw - 28px)); height: min(580px, calc(100dvh - 120px));
+  display: flex; flex-direction: column; border-radius: var(--r-lg); overflow: hidden;
+  opacity: 0; transform: translateY(16px) scale(.97); pointer-events: none; visibility: hidden;
+  transition: opacity .35s var(--ease), transform .45s var(--ease), visibility .35s;
+}
+.ai-panel.on { opacity: 1; transform: none; pointer-events: auto; visibility: visible; }
+.ai-panel.g { background: linear-gradient(160deg, rgba(20,27,46,.95), rgba(8,12,22,.97)); }
+.ai-panel > * { position: relative; z-index: 3; }
+.ai-head { display: flex; align-items: center; gap: 12px; padding: 14px 14px 14px 16px; border-bottom: 1px solid var(--line); }
+.ai-av { width: 40px; height: 40px; border-radius: 50%; padding: 2px; background: var(--iri); flex: 0 0 auto; }
+.ai-av img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 2px solid #0b1020; }
+.ai-head b { display: block; font-family: 'Space Grotesk', sans-serif; font-size: .95rem; line-height: 1.2; }
+.ai-head small { display: flex; align-items: center; gap: 6px; font-family: 'Fira Code', monospace; font-size: .62rem; color: var(--text); }
+.ai-head small i { width: 7px; height: 7px; border-radius: 50%; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
+.ai-x { margin-left: auto; width: 36px; height: 36px; border: 0; border-radius: 50%; display: grid; place-items: center; color: var(--text); background: rgba(255,255,255,.06); transition: color .2s, background .2s; }
+.ai-x:hover { color: var(--ink); background: rgba(255,255,255,.12); }
+.ai-x svg { width: 16px; height: 16px; }
+
+.ai-log { flex: 1; overflow-y: auto; padding: 16px; display: flex; flex-direction: column; gap: 10px; scrollbar-width: thin; scrollbar-color: rgba(255,255,255,.15) transparent; overscroll-behavior: contain; }
+.msg { max-width: 86%; padding: 10px 14px; border-radius: 18px; font-size: .88rem; line-height: 1.5; white-space: pre-wrap; overflow-wrap: anywhere; }
+.msg.bot { align-self: flex-start; border-bottom-left-radius: 6px; color: var(--ink); background: linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.04)); box-shadow: inset 0 1px 0 rgba(255,255,255,.12), inset 0 0 0 1px rgba(255,255,255,.07); }
+.msg.me { align-self: flex-end; border-bottom-right-radius: 6px; color: #04111c; background: linear-gradient(95deg, #46f2ff, #8b7bff 70%, #b98bff); }
+.msg.wait { color: var(--text); }
+.msg.wait::after { content: ''; display: inline-block; width: 1.4em; text-align: left; animation: dots 1.2s steps(4) infinite; }
+@keyframes dots { 0% { content: ''; } 25% { content: '.'; } 50% { content: '..'; } 75% { content: '...'; } }
+.msg.note { align-self: center; max-width: 100%; text-align: center; font-size: .74rem; color: var(--text); background: none; box-shadow: none; padding: 4px 8px; }
+.sugs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+.sugs button {
+  border: 0; padding: 7px 12px; border-radius: 999px; font-size: .76rem; color: var(--ink);
+  background: rgba(0,217,255,.08); box-shadow: inset 0 0 0 1px rgba(0,217,255,.35); transition: background .2s;
+}
+.sugs button:hover { background: rgba(0,217,255,.18); }
+
+.ai-form { display: flex; align-items: flex-end; gap: 8px; padding: 12px; border-top: 1px solid var(--line); }
+.ai-form textarea {
+  flex: 1; min-height: 44px; max-height: 120px; resize: none; border: 0; outline: 0; padding: 12px 16px; border-radius: 22px;
+  color: var(--ink); line-height: 1.4; font-size: .9rem;
+  background: rgba(255,255,255,.06); box-shadow: inset 0 0 0 1px rgba(255,255,255,.1);
+}
+.ai-form textarea:focus { box-shadow: inset 0 0 0 1.5px rgba(0,217,255,.7); }
+.ai-form textarea::placeholder { color: var(--dim); }
+.ai-send { width: 44px; height: 44px; flex: 0 0 auto; border: 0; border-radius: 50%; display: grid; place-items: center; color: #04111c; background: linear-gradient(135deg, #46f2ff, #8b7bff 60%, #ff4fae); transition: transform .25s var(--ease), opacity .2s; }
+.ai-send:disabled { opacity: .4; }
+.ai-send:not(:disabled):hover { transform: scale(1.06); }
+.ai-send svg { width: 18px; height: 18px; }
+.ai-foot { padding: 0 14px 10px; text-align: center; font-size: .62rem; color: var(--dim); }
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 10px; }
+  .hero-text { text-align: center; }
+  .hero p.lead { margin-inline: auto; }
+  .hero-cta { justify-content: center; }
+  .hero-visual { min-height: 520px; max-width: 520px; width: 100%; margin: 0 auto; }
+  .about, .tl-grid { grid-template-columns: 1fr; }
+  .hero.view.on { min-height: 0; }
+  .hero-areas > .mono { text-align: center; }
+  .area-chips { justify-content: center; }
+}
+@media (max-width: 620px) {
+  .wrap { width: min(1120px, 100% - 32px); }
+  section { padding: 64px 0; }
+  nav.top { padding: 6px 6px 6px 14px; gap: 8px; top: calc(env(safe-area-inset-top, 0px) + 10px); }
+  nav.top .logo { font-size: .76rem; }
+  .nav-links a { padding: 9px 10px; font-size: .68rem; }
+  .hero { padding-top: calc(env(safe-area-inset-top, 0px) + 100px); }
+  .hero-visual { min-height: 380px; }
+  .hero-orb { width: min(370px, 96%); }
+  .nav-av { width: 34px; height: 34px; }
+  .lang-btn { height: 34px; padding: 0 9px; gap: 4px; font-size: .66rem; }
+  .lang-btn svg { display: none; }
+  .pc-av { width: 66px; height: 66px; }
+      .about-txt { padding: 26px 20px; }
+  .about-head { flex-direction: column; text-align: center; gap: 12px; }
+  .tl { padding-left: 28px; }
+  .tl-dot { left: -27px; }
+  .tl-item { padding: 20px 18px; }
+  .page { padding-top: calc(env(safe-area-inset-top, 0px) + 100px); }
+  .ad-head { grid-template-columns: 1fr; text-align: center; padding: 24px 18px; gap: 14px; margin-bottom: 30px; }
+  .ad-head .ring { width: 96px; height: 96px; }
+  .ad-head .ring-arc { -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px)); mask: radial-gradient(farthest-side, transparent calc(100% - 10px), #000 calc(100% - 9px)); }
+  .ad-head .ring-core { inset: 16px; }
+  .ad-head .ring-core b { font-size: 1.4rem; }
+  .ad-head .ring-core span { font-size: .5rem; }
+  nav.top .logo { display: none; }
+  nav.top { padding: 6px; }
+  .nav-links { margin: 0 auto; }
+  .ad-head p { margin-inline: auto; }
+  .aidx { grid-template-columns: 1fr; }
+  .chip-a { height: 42px; padding: 0 14px; font-size: .72rem; }
+  .pager .btn { flex: 1; }
+  .ai-fab { right: 14px; bottom: calc(env(safe-area-inset-bottom, 0px) + 14px); width: 56px; height: 56px; }
+  .ai-panel { right: 8px; left: 8px; width: auto; bottom: calc(env(safe-area-inset-bottom, 0px) + 8px); height: min(560px, calc(100dvh - 90px)); }
+  .ai-form textarea { font-size: 16px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; }
+  .rv { opacity: 1; transform: none; filter: none; }
+  #boot, .grain, #net { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="boot" aria-hidden="true">
+  <div class="boot-in">
+    <div id="bootLog"></div>
+    <div class="boot-bar"><i id="bootBar"></i></div>
+    <div class="boot-skip" data-i18n="skip">[ click o tecla para saltar ]</div>
+  </div>
+</div>
+
+<div class="aurora" aria-hidden="true"></div>
+<canvas id="net" aria-hidden="true"></canvas>
+<div class="grain" id="grain" aria-hidden="true"></div>
+<div class="scroll-bar" aria-hidden="true"></div>
+
+<div id="curRing" class="cur" aria-hidden="true">
+  <svg viewBox="0 0 64 64" fill="none">
+    <g class="rot"><circle class="arc" cx="32" cy="32" r="23" stroke="#00d9ff" stroke-width="1.1" stroke-dasharray="14 9" stroke-linecap="round" opacity=".85"/></g>
+    <circle cx="32" cy="32" r="29" stroke="#00d9ff" stroke-width=".6" opacity=".22"/>
+    <g class="br" stroke="#00d9ff" stroke-width="1.8" stroke-linecap="round"><path d="M10 20v-8h8M54 20v-8h-8M10 44v8h8M54 44v8h-8"/></g>
+    <g class="x" stroke="#00d9ff" stroke-width="1.1" stroke-linecap="round" opacity=".7"><path d="M32 6v7M32 51v7M6 32h7M51 32h7"/></g>
+  </svg>
+</div>
+<div id="curDot" class="cur" aria-hidden="true"></div>
+
+<!-- ══ NAV ══ -->
+<nav class="top g soft" aria-label="Principal">
+  <a class="logo" href="#/">&gt; bl4ckmuffin_</a>
+  <div class="nav-links">
+    <a href="#/" data-nav="home" data-i18n="navHome">Inicio</a>
+    <a href="#/perfil" data-nav="perfil" data-i18n="navPerfil">Perfil</a>
+    <a href="#/areas" data-nav="areas" data-i18n="navAreas">Áreas</a>
+    <a href="#/trayectoria" data-nav="trayectoria" data-i18n="navTray">Trayectoria</a>
+  </div>
+  <div class="lang-sw">
+    <button class="lang-btn" id="langBtn" type="button" aria-haspopup="true" aria-expanded="false" aria-controls="langMenu" data-i18n-aria="langLbl" aria-label="Idioma">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/></svg><span id="langCur">ES</span>
+    </button>
+    <div class="lang-menu" id="langMenu" role="menu" hidden>
+      <button type="button" role="menuitemradio" data-lang="es" aria-checked="true"><b>ES</b>Español</button>
+      <button type="button" role="menuitemradio" data-lang="en" aria-checked="false"><b>EN</b>English</button>
+    </div>
+  </div>
+  <a class="nav-av" href="https://www.linkedin.com/in/maddii/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V16M8 7.6v.01M12 16v-5.5M12 13a2.2 2.2 0 0 1 4.4 0V16"/></svg></span></a>
+</nav>
+
+<main id="app">
+<!-- ══ VISTA: INICIO ══ -->
+<section class="view hero" data-view="home" id="top">
+  <div class="wrap hero-grid">
+    <div class="hero-text">
+      <div class="kicker g soft rv"><i></i><span>$ whoami · pentester</span></div>
+      <h1 class="rv" style="--d:80ms">Magdalena A. Gil</h1>
+      <div class="aka rv" style="--d:120ms"><span>aka</span> Bl4ckmuffin</div>
+      <h2 class="rv" style="--d:160ms">Ethical Hacking / <span class="typed" id="typed">Pentester</span><span class="caret" aria-hidden="true"></span></h2>
+      <p class="lead rv" style="--d:240ms" data-i18n="lead">Pentester especializada en seguridad web y APIs, redes inalámbricas, ingeniería social, OSINT y seguridad en modelos de lenguaje.</p>
+      <div class="hero-areas rv" style="--d:320ms">
+        <span class="mono" data-i18n="areasLbl">áreas</span>
+        <div class="area-chips" id="homeChips"></div>
+      </div>
+    </div>
+
+    <div class="hero-visual rv" style="--d:200ms">
+      <div class="hero-orb" id="heroChar"><img class="hero-char" src="portrait.webp" alt="Retrato ilustrado de Magdalena A. Gil" data-i18n-alt="portrait" fetchpriority="high"></div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ VISTA: PERFIL ══ -->
+<section class="view page" data-view="perfil">
+  <div class="wrap">
+    <header class="sh rv">
+      <span class="tag" data-i18n="aboutTag">// sobre mí</span>
+      <h2 data-i18n="aboutH">Perfil profesional</h2>
+    </header>
+    <div class="about">
+      <div class="about-txt g rv">
+        <div class="about-head">
+          <div class="pc-av"><img src="avatar.webp" alt="" width="82" height="82"></div>
+          <div>
+            <h3>Magdalena A. Gil</h3>
+            <span class="mono role">aka Bl4ckmuffin · Penetration Tester</span>
+          </div>
+        </div>
+        <p data-i18n="about1">Realizo auditorías de seguridad ofensiva sobre aplicaciones web y APIs, redes inalámbricas y aplicaciones que integran modelos de lenguaje, además de simulaciones controladas de ingeniería social por SMS y trabajos de inteligencia de fuentes abiertas.</p>
+        <p data-i18n="about2">He trabajado como consultora en KPMG España y como Security Transformation Analyst en Accenture España, y cuento con las certificaciones BSCP de PortSwigger y eCPPT y eJPT de INE.</p>
+      </div>
+    </div>
+    <h3 class="col-title mono rv" data-i18n="skillsH">Habilidades</h3>
+    <div class="skills" id="skills"></div>
+    <h3 class="col-title mono rv" style="margin-top:34px" data-i18n="langsH">Idiomas</h3>
+    <div class="langs rv" id="langs"></div>
+    <div id="socialBlock" hidden>
+      <h3 class="col-title mono rv" style="margin-top:34px" data-i18n="findH">Encuéntrame</h3>
+      <div class="socials" id="socials"></div>
+    </div>
+    <nav class="pager rv">
+      <a class="btn btn-glass" href="#/" data-i18n="pgHome">← Inicio</a>
+      <a class="btn btn-primary" href="#/areas" data-i18n="pgAreas">Áreas →</a>
+    </nav>
+  </div>
+</section>
+
+<!-- ══ VISTA: ÍNDICE DE ÁREAS ══ -->
+<section class="view page" data-view="areas">
+  <div class="wrap">
+    <header class="sh rv">
+      <span class="tag" data-i18n="areasTag">// áreas de trabajo</span>
+      <h2 data-i18n="areasH">Áreas</h2>
+      <p data-i18n="areasP">Elige un área para ver su metodología y técnicas.</p>
+    </header>
+    <div class="aidx" id="areaIndex"></div>
+  </div>
+</section>
+
+<!-- ══ VISTA: DETALLE DE ÁREA (se rellena según la ruta) ══ -->
+<section class="view page" data-view="area">
+  <div class="wrap" id="areaView"></div>
+</section>
+
+<!-- ══ VISTA: TRAYECTORIA ══ -->
+<section class="view page" data-view="trayectoria">
+  <div class="wrap">
+    <header class="sh rv">
+      <span class="tag" data-i18n="trayTag">// trayectoria</span>
+      <h2 data-i18n="trayH">Experiencia y certificaciones</h2>
+    </header>
+    <div class="tl-grid">
+      <ol class="tl" id="timeline"></ol>
+      <aside>
+        <h3 class="col-title mono rv" data-i18n="certsH">Certificaciones</h3>
+        <div class="certs" id="certs"></div>
+      </aside>
+    </div>
+    <nav class="pager rv">
+      <a class="btn btn-glass" href="#/areas" data-i18n="pgAreasB">← Áreas</a>
+      <a class="btn btn-primary" href="#/" data-i18n="navHome">Inicio</a>
+    </nav>
+  </div>
+</section>
+</main>
+
+<footer>
+  <b>&gt; bl4ckmuffin_</b> · Ethical Hacking · v2.0
+</footer>
+
+<!-- ══ ASISTENTE IA (solo aparece si la página puede hablar con Claude) ══ -->
+<button class="ai-fab" id="aiFab" type="button" aria-label="Abrir el asistente" data-i18n-aria="aiOpen" aria-controls="aiPanel" aria-expanded="false" hidden>
+  <img src="avatar.webp" alt=""><span class="ping" aria-hidden="true"></span>
+</button>
+<div class="ai-panel g hot" id="aiPanel" role="dialog" aria-label="Asistente del portfolio" data-i18n-aria="aiPanel" aria-hidden="true">
+  <header class="ai-head">
+    <div class="ai-av"><img src="avatar.webp" alt=""></div>
+    <div><b data-i18n="aiTitle">Asistente IA</b><small><i></i><span data-i18n="aiSub">pregúntame por este perfil</span></small></div>
+    <button class="ai-x" id="aiClose" type="button" aria-label="Cerrar el asistente" data-i18n-aria="aiClose">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </header>
+  <div class="ai-log" id="aiLog" aria-live="polite"></div>
+  <form class="ai-form" id="aiForm">
+    <label class="sr-only" for="aiIn" data-i18n="aiQ">Tu pregunta</label>
+    <textarea id="aiIn" rows="1" placeholder="Escribe tu pregunta…" data-i18n-ph="aiPh" maxlength="600"></textarea>
+    <button class="ai-send" id="aiSend" type="submit" aria-label="Enviar" data-i18n-aria="aiSend" disabled>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13M22 2l-7 20-4-9-9-4 20-7Z"/></svg>
+    </button>
+  </form>
+  <div class="ai-foot" data-i18n="aiFoot">Respuestas generadas por IA · pueden contener errores</div>
+</div>
+
+<script>
+/* ═════════════════════════════════════════════════════════════
+   IDIOMA — es · en  (?lang=en en la URL fuerza uno)
+   ═════════════════════════════════════════════════════════════ */
+const LANGS = ['es', 'en'];
+let lang = (function () {
+  let q = null, s = null;
+  try { q = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+  if (LANGS.includes(q)) return q;
+  try { s = localStorage.getItem('bm-lang'); } catch (e) {}
+  if (LANGS.includes(s)) return s;
+  const n = String(navigator.language || 'es').slice(0, 2).toLowerCase();
+  return LANGS.includes(n) ? n : 'en';
+})();
+/* texto en el idioma activo: acepta 'cadena' o { es, en } */
+const tx = v => (v && typeof v === 'object' && !Array.isArray(v) && 'es' in v) ? (v[lang] ?? v.es) : v;
+
+const UI = {
+  skip:      { es: '[ click o tecla para saltar ]', en: '[ click or press a key to skip ]' },
+  bootLoad:  { es: 'cargando perfil', en: 'loading profile' },
+  navHome:   { es: 'Inicio', en: 'Home' },
+  navPerfil: { es: 'Perfil', en: 'Profile' },
+  navAreas:  { es: 'Áreas', en: 'Areas' },
+  navTray:   { es: 'Trayectoria', en: 'Career' },
+  langLbl:   { es: 'Idioma', en: 'Language' },
+  lead:      { es: 'Pentester especializada en seguridad web y APIs, redes inalámbricas, ingeniería social, OSINT y seguridad en modelos de lenguaje.',
+               en: 'Pentester specialising in web and API security, wireless networks, social engineering, OSINT and language model security.' },
+  areasLbl:  { es: 'áreas', en: 'areas' },
+  portrait:  { es: 'Retrato ilustrado de Magdalena A. Gil', en: 'Illustrated portrait of Magdalena A. Gil' },
+  aboutTag:  { es: '// sobre mí', en: '// about me' },
+  aboutH:    { es: 'Perfil profesional', en: 'Professional profile' },
+  about1:    { es: 'Realizo auditorías de seguridad ofensiva sobre aplicaciones web y APIs, redes inalámbricas y aplicaciones que integran modelos de lenguaje, además de simulaciones controladas de ingeniería social por SMS y trabajos de inteligencia de fuentes abiertas.',
+               en: 'I carry out offensive security assessments of web applications and APIs, wireless networks and applications that integrate language models, as well as controlled SMS social engineering simulations and open-source intelligence work.' },
+  about2:    { es: 'He trabajado como consultora en KPMG España y como Security Transformation Analyst en Accenture España, y cuento con las certificaciones BSCP de PortSwigger y eCPPT y eJPT de INE.',
+               en: 'I have worked as a consultant at KPMG España and as a Security Transformation Analyst at Accenture España, and I hold the BSCP certification from PortSwigger and the eCPPT and eJPT certifications from INE.' },
+  skillsH:   { es: 'Habilidades', en: 'Skills' },
+  langsH:    { es: 'Idiomas', en: 'Languages' },
+  findH:     { es: 'Encuéntrame', en: 'Find me' },
+  pgHome:    { es: '← Inicio', en: '← Home' },
+  pgAreas:   { es: 'Áreas →', en: 'Areas →' },
+  pgAreasB:  { es: '← Áreas', en: '← Areas' },
+  areasTag:  { es: '// áreas de trabajo', en: '// areas of work' },
+  areasH:    { es: 'Áreas', en: 'Areas' },
+  areasP:    { es: 'Elige un área para ver su metodología y técnicas.', en: 'Choose an area to see its methodology and techniques.' },
+  trayTag:   { es: '// trayectoria', en: '// career' },
+  trayH:     { es: 'Experiencia y certificaciones', en: 'Experience & certifications' },
+  certsH:    { es: 'Certificaciones', en: 'Certifications' },
+  tecnicas:  { es: 'técnicas', en: 'techniques' },
+  fasesN:    { es: 'fases', en: 'phases' },
+  verArea:   { es: 'Ver área', en: 'View area' },
+  abrir:     { es: 'Abrir ↗', en: 'Open ↗' },
+  pronto:    { es: 'pronto', en: 'soon' },
+  metodo:    { es: 'Metodología', en: 'Methodology' },
+  tecnicasH: { es: 'Técnicas', en: 'Techniques' },
+    todas:     { es: 'Todas las áreas', en: 'All areas' },
+  area:      { es: 'área', en: 'area' },
+  aiOpen:    { es: 'Abrir el asistente', en: 'Open the assistant' },
+  aiPanel:   { es: 'Asistente del portfolio', en: 'Portfolio assistant' },
+  aiTitle:   { es: 'Asistente IA', en: 'AI assistant' },
+  aiSub:     { es: 'pregúntame por este perfil', en: 'ask me about this profile' },
+  aiClose:   { es: 'Cerrar el asistente', en: 'Close the assistant' },
+  aiQ:       { es: 'Tu pregunta', en: 'Your question' },
+  aiPh:      { es: 'Escribe tu pregunta…', en: 'Type your question…' },
+  aiSend:    { es: 'Enviar', en: 'Send' },
+  aiStop:    { es: 'Parar', en: 'Stop' },
+  aiFoot:    { es: 'Respuestas generadas por IA · pueden contener errores', en: 'AI-generated answers · may contain errors' },
+  aiHi:      { es: '¡Hola! Soy el asistente de este portfolio. Pregúntame por la experiencia, las certificaciones o las áreas de trabajo de Magdalena A. Gil.',
+               en: 'Hi! I’m this portfolio’s assistant. Ask me about Magdalena A. Gil’s experience, certifications or areas of work.' },
+  aiSugs:    { es: ['¿Qué certificaciones tiene?', '¿Dónde ha trabajado?', '¿Cómo audita un LLM?'],
+               en: ['What certifications does she hold?', 'Where has she worked?', 'How does she audit an LLM?'] },
+  aiWait:    { es: 'Pensando', en: 'Thinking' },
+  aiCut:     { es: 'Respuesta recortada por longitud.', en: 'Answer cut short for length.' },
+  aiFail:    { es: 'Ha fallado la conexión. Inténtalo de nuevo.', en: 'The connection failed. Please try again.' },
+  aiOff:     { es: 'Asistente no disponible', en: 'Assistant unavailable' },
+  roles:     { es: ['Pentester', 'Web & API', 'WiFi', 'Smishing', 'Pentesting LLM', 'OSINT'],
+               en: ['Pentester', 'Web & API', 'WiFi', 'Smishing', 'LLM Pentesting', 'OSINT'] },
+  metaDesc:  { es: 'Magdalena A. Gil aka Bl4ckmuffin — pentester especializada en seguridad web y APIs, auditoría WiFi, simulación de smishing y seguridad en modelos de lenguaje.',
+               en: 'Magdalena A. Gil aka Bl4ckmuffin — pentester specialising in web and API security, WiFi auditing, smishing simulation and language model security.' }
+};
+const T = k => tx(UI[k]) ?? k;
+
+const TITULOS = {
+  home:        'Magdalena A. Gil aka Bl4ckmuffin — Pentester',
+  perfil:      { es: 'Perfil · Magdalena A. Gil', en: 'Profile · Magdalena A. Gil' },
+  areas:       { es: 'Áreas · Magdalena A. Gil', en: 'Areas · Magdalena A. Gil' },
+  trayectoria: { es: 'Trayectoria · Magdalena A. Gil', en: 'Career · Magdalena A. Gil' }
+};
+
+/* textos fijos del HTML: data-i18n (texto), data-i18n-aria, data-i18n-ph, data-i18n-alt */
+function aplicarTextos() {
+  document.documentElement.lang = lang;
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = T(el.dataset.i18n);
+    if (el.dataset.txt !== undefined) { delete el.dataset.txt; el._sid = (el._sid || 0) + 1; }  /* cancela un scramble en curso */
+    el.textContent = v;
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => el.setAttribute('aria-label', T(el.dataset.i18nAria)));
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => el.setAttribute('placeholder', T(el.dataset.i18nPh)));
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => el.setAttribute('alt', T(el.dataset.i18nAlt)));
+  const md = document.querySelector('meta[name="description"]'); if (md) md.content = T('metaDesc');
+  const cur = document.getElementById('langCur'); if (cur) cur.textContent = lang.toUpperCase();
+  document.querySelectorAll('.lang-menu [data-lang]').forEach(b => b.setAttribute('aria-checked', String(b.dataset.lang === lang)));
+}
+aplicarTextos();
+
+/* ═════════════════════════════════════════════════════════════
+   DATOS — todo lo editable está aquí arriba
+   ═════════════════════════════════════════════════════════════ */
+
+/* Iconos (trazos SVG, 24×24) */
+const I = {
+  globe:  '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18 15 15 0 0 1 0-18"/>',
+  wifi:   '<path d="M2 8.8a16 16 0 0 1 20 0M5.5 12.4a11 11 0 0 1 13 0M9 16a6 6 0 0 1 6 0"/><circle cx="12" cy="19.5" r="1.1" fill="currentColor"/>',
+  phone:  '<rect x="6" y="2.5" width="12" height="19" rx="2.5"/><path d="M10.5 18.5h3"/>',
+  bot:    '<rect x="5" y="7" width="14" height="12" rx="3"/><path d="M12 7V4M8.5 12v1.5M15.5 12v1.5M2.5 12h2M19.5 12h2"/>',
+  book:   '<path d="M4 19V5a2 2 0 0 1 2-2h12v18H6a2 2 0 0 1-2-2Zm2 0h12M8 7h7M8 11h5"/>',
+  bug:    '<path d="M12 3v3M8 6 6 4M16 6l2-2"/><rect x="7" y="6" width="10" height="13" rx="5"/><path d="M7 11H4M20 11h-3M7 15H4M20 15h-3"/>',
+  inject: '<path d="m18 2 4 4M17 7l3-3M19 9 8.5 19.5a2.1 2.1 0 0 1-3 0l-1-1a2.1 2.1 0 0 1 0-3L15 5M9 11l4 4M5 19l-3 3"/>',
+  unlock: '<rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 7.5-2"/>',
+  key:    '<circle cx="7.5" cy="15.5" r="4.5"/><path d="m10.7 12.3 9.8-9.8M17 6l3 3M14 9l2 2"/>',
+  radar:  '<path d="M4.9 19.1a10 10 0 1 1 14.2 0"/><path d="M8.5 15.5a5 5 0 1 1 7 0"/><circle cx="12" cy="12" r="1.5"/>',
+  gear:   '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/>',
+  code:   '<path d="m8 9-4 3 4 3M16 9l4 3-4 3M13.5 6l-3 12"/>',
+  twin:   '<path d="M5 12.5a7 7 0 0 1 6-3.4M13 9.1a7 7 0 0 1 6 3.4"/><circle cx="6" cy="17" r="2"/><circle cx="18" cy="17" r="2"/>',
+  build:  '<rect x="4" y="3" width="16" height="18" rx="2"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1"/>',
+  bolt:   '<path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/>',
+  hook:   '<path d="M14 3v10.5a4.5 4.5 0 0 1-9 0V12l2.5 2"/><circle cx="14" cy="3" r="1"/>',
+  chart:  '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+  out:    '<path d="M12 3v12M7 10l5 5 5-5M4 21h16"/>',
+  tool:   '<path d="M14 7a4 4 0 1 1 3 3l-7 7-3-3 7-7Z"/>',
+  term:   '<rect x="3" y="4" width="18" height="16" rx="2"/><path d="m7 9 3 3-3 3M13 15h4"/>',
+  db:     '<ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/>',
+  arrow:  '<path d="M5 12h14M13 6l6 6-6 6"/>',
+  eye:    '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/>',
+  people: '<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><circle cx="17" cy="9" r="2.5"/><path d="M16 14.5a5 5 0 0 1 5.5 5"/>',
+  pin:    '<path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z"/><circle cx="12" cy="9.5" r="2.5"/>',
+  search: '<circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/>',
+  target: '<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/>',
+  layers: '<path d="m12 3 9 5-9 5-9-5 9-5Z"/><path d="m3 13 9 5 9-5"/>',
+  doc:    '<path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5M9 13h6M9 17h4"/>',
+  award:  '<circle cx="12" cy="9" r="6"/><path d="m8.5 14-1.5 7 5-3 5 3-1.5-7"/>',
+  mail:   '<rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="m3 7 9 6 9-6"/>',
+  link:   '<path d="M10 14a5 5 0 0 0 7 0l3-3a5 5 0 0 0-7-7l-1 1"/><path d="M14 10a5 5 0 0 0-7 0l-3 3a5 5 0 0 0 7 7l1-1"/>',
+  linkedin: '<rect x="3" y="3" width="18" height="18" rx="4"/><path d="M8 10.5V16M8 7.6v.01M12 16v-5.5M12 13a2.2 2.2 0 0 1 4.4 0V16"/>'
+};
+const svg = (k, sw) => '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="' + (sw || 1.8) +
+                       '" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + I[k] + '</svg>';
+
+/* Secciones futuras: aparecen en el índice de áreas como "pronto".
+   Cuando una esté lista, muévela a AREAS (o ponle url para enlazarla fuera). */
+const PRONTO = [];
+
+/* Áreas. Cada tarjeta acepta url:'https://…' para enlazar un writeup.
+   Los textos van en los dos idiomas: { es, en }. Si falta uno, se usa el español. */
+const AREAS = [
+  {
+    id: 'web', nombre: 'Web / API', icono: 'globe',
+    titulo: { es: 'Auditoría de Aplicaciones Web', en: 'Web Application Auditing' },
+    desc: {
+      es: 'Metodología basada en OWASP Testing Guide y OWASP Top 10 para identificar y explotar vulnerabilidades en aplicaciones web.',
+      en: 'Methodology based on the OWASP Testing Guide and OWASP Top 10 to identify and exploit vulnerabilities in web applications.'
+    },
+    fases: [
+      [{ es: 'Reconocimiento', en: 'Reconnaissance' }, {
+        es: 'Subdomain enumeration, port scanning, tech fingerprinting, Google dorking, wayback URLs.',
+        en: 'Subdomain enumeration, port scanning, tech fingerprinting, Google dorking, Wayback URLs.' }],
+      [{ es: 'Mapping', en: 'Mapping' }, {
+        es: 'Spider/crawl, endpoint discovery, parameter fuzzing, revisión de documentación de API, GraphQL introspection.',
+        en: 'Spidering/crawling, endpoint discovery, parameter fuzzing, API documentation review, GraphQL introspection.' }],
+      [{ es: 'Vulnerability Discovery', en: 'Vulnerability Discovery' }, {
+        es: 'Pruebas manuales OWASP + herramientas automatizadas. Fuzzing de parámetros, headers y payloads.',
+        en: 'Manual OWASP testing plus automated tools. Fuzzing of parameters, headers and payloads.' }],
+      [{ es: 'Exploitation', en: 'Exploitation' }, {
+        es: 'PoC funcional, impacto real, encadenamiento de vulnerabilidades para maximizar severidad.',
+        en: 'Working PoC, real impact, chaining vulnerabilities to maximise severity.' }],
+      [{ es: 'Reporting', en: 'Reporting' }, {
+        es: 'Informe con CVSS 3.1, evidencias, remediación y executive summary.',
+        en: 'Report with CVSS 3.1 scoring, evidence, remediation and an executive summary.' }]
+    ],
+    items: [
+      { i: 'inject', t: 'Injection', tag: 'A03:2021', d: {
+        es: 'SQLi, NoSQLi, LDAP, OS command injection. Desde union-based hasta blind time-based y out-of-band.',
+        en: 'SQLi, NoSQLi, LDAP and OS command injection. From union-based to blind time-based and out-of-band.' } },
+      { i: 'unlock', t: 'Broken Access Control', tag: 'A01:2021', d: {
+        es: 'IDOR, privilege escalation, JWT manipulation, CORS misconfiguration, path traversal.',
+        en: 'IDOR, privilege escalation, JWT manipulation, CORS misconfiguration, path traversal.' } },
+      { i: 'key', t: 'Auth Failures', tag: 'A07:2021', d: {
+        es: 'Brute force, credential stuffing, session fixation, token leaks, MFA bypass.',
+        en: 'Brute force, credential stuffing, session fixation, token leaks, MFA bypass.' } },
+      { i: 'radar', t: 'SSRF', tag: 'A10:2021', d: {
+        es: 'Server-Side Request Forgery para acceder a servicios internos, metadata de cloud y pivoting.',
+        en: 'Server-Side Request Forgery to reach internal services, cloud metadata and pivoting.' } },
+      { i: 'gear', t: 'Security Misconfiguration', tag: 'A05:2021', d: {
+        es: 'Headers faltantes, debug expuesto, default credentials, directory listing, stack traces.',
+        en: 'Missing headers, exposed debug mode, default credentials, directory listing, stack traces.' } },
+      { i: 'code', t: 'XSS & CSRF', tag: 'A03:2021', d: {
+        es: 'Reflected, stored, DOM-based XSS. Cross-site request forgery y bypasses de tokens anti-CSRF.',
+        en: 'Reflected, stored and DOM-based XSS. Cross-site request forgery and anti-CSRF token bypasses.' } }
+    ],
+    cmd: {
+      es: '# recon rápido\n$ subfinder -d target.com -silent | httpx -title -sc -cl\n$ nuclei -u https://target.com -t cves/ -severity critical,high\n$ ffuf -u https://target.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-medium.txt',
+      en: '# quick recon\n$ subfinder -d target.com -silent | httpx -title -sc -cl\n$ nuclei -u https://target.com -t cves/ -severity critical,high\n$ ffuf -u https://target.com/FUZZ -w /usr/share/seclists/Discovery/Web-Content/raft-medium.txt'
+    }
+  },
+  {
+    id: 'wifi', nombre: 'WiFi', icono: 'wifi',
+    titulo: { es: 'Auditoría de Redes Inalámbricas', en: 'Wireless Network Auditing' },
+    desc: {
+      es: 'Metodología OWISAM para auditoría integral de seguridad WiFi: desde el descubrimiento hasta la explotación de puntos de acceso.',
+      en: 'OWISAM methodology for comprehensive WiFi security auditing: from discovery to the exploitation of access points.'
+    },
+    fases: [],
+    items: [
+      { i: 'key', t: 'WPA/WPA2 Cracking', tag: 'OWISAM', d: {
+        es: 'Captura de handshake con airodump-ng, cracking con hashcat/aircrack-ng y ataques PMKID.',
+        en: 'Handshake capture with airodump-ng, cracking with hashcat/aircrack-ng and PMKID attacks.' } },
+      { i: 'twin', t: 'Evil Twin', tag: 'OWISAM', d: {
+        es: 'Hostapd-mana + captive portal para captura de credenciales en redes empresariales y públicas.',
+        en: 'hostapd-mana + captive portal to capture credentials on corporate and public networks.' } },
+      { i: 'build', t: 'WPA Enterprise', tag: 'OWISAM', d: {
+        es: 'Ataques a EAP-PEAP/TTLS con eaphammer, captura de hashes NTLM y relay.',
+        en: 'Attacks on EAP-PEAP/TTLS with eaphammer, NTLM hash capture and relay.' } },
+      { i: 'bolt', t: 'Deauth & Jamming', tag: 'OWISAM', d: {
+        es: 'Denegación de servicio selectiva, client isolation bypass, KARMA attacks.',
+        en: 'Selective denial of service, client isolation bypass, KARMA attacks.' } }
+    ],
+    cmd: {
+      es: '# captura WPA handshake\n$ airmon-ng start wlan0\n$ airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon\n$ aireplay-ng -0 5 -a AA:BB:CC:DD:EE:FF wlan0mon\n$ hashcat -m 22000 capture.hc22000 rockyou.txt',
+      en: '# WPA handshake capture\n$ airmon-ng start wlan0\n$ airodump-ng -c 6 --bssid AA:BB:CC:DD:EE:FF -w capture wlan0mon\n$ aireplay-ng -0 5 -a AA:BB:CC:DD:EE:FF wlan0mon\n$ hashcat -m 22000 capture.hc22000 rockyou.txt'
+    }
+  },
+  {
+    id: 'smishing', nombre: 'Smishing', icono: 'phone',
+    titulo: { es: 'Ingeniería Social vía SMS', en: 'SMS Social Engineering' },
+    desc: {
+      es: 'Simulaciones de phishing por SMS para evaluar la concienciación de los empleados y la resiliencia organizacional.',
+      en: 'SMS phishing simulations to assess employee awareness and organisational resilience.'
+    },
+    fases: [
+      [{ es: 'Scope & Pretexto', en: 'Scope & Pretext' }, {
+        es: 'Definición de objetivos con el cliente, selección de pretexto y creación del SMS + landing page.',
+        en: 'Defining objectives with the client, choosing the pretext and creating the SMS and landing page.' }],
+      [{ es: 'Infraestructura', en: 'Infrastructure' }, {
+        es: 'Setup de dominio, certificados, servidor de tracking, plataforma de envío (GoPhish adaptado).',
+        en: 'Domain setup, certificates, tracking server and sending platform (adapted GoPhish).' }],
+      [{ es: 'Ejecución', en: 'Execution' }, {
+        es: 'Envío controlado con seguimiento en tiempo real de interacciones y captura de datos.',
+        en: 'Controlled sending with real-time tracking of interactions and data capture.' }],
+      [{ es: 'Resultados', en: 'Results' }, {
+        es: 'Recopilación de las interacciones registradas durante la campaña.',
+        en: 'Collection of the interactions recorded during the campaign.' }]
+    ],
+    items: [
+      { i: 'phone', t: { es: 'Campañas Controladas', en: 'Controlled Campaigns' },
+        tag: { es: 'social engineering', en: 'social engineering' }, d: {
+        es: 'Diseño de pretextos realistas adaptados al sector: bancario, paquetería, RRHH, soporte IT.',
+        en: 'Realistic pretexts tailored to the sector: banking, parcel delivery, HR, IT support.' } },
+      { i: 'hook', t: { es: 'Landing Pages', en: 'Landing Pages' }, tag: 'credential harvesting', d: {
+        es: 'Clones de páginas legítimas con tracking de interacciones: clicks, credenciales, geolocalización.',
+        en: 'Clones of legitimate pages with interaction tracking: clicks, credentials, geolocation.' } },
+      { i: 'chart', t: { es: 'Métricas & Reporting', en: 'Metrics & Reporting' },
+        tag: { es: 'awareness metrics', en: 'awareness metrics' }, d: {
+        es: 'Tasa de apertura, clicks, credenciales capturadas, tiempo de reporte. KPIs de concienciación.',
+        en: 'Open rate, clicks, captured credentials, time to report. Awareness KPIs.' } }
+    ],
+    cmd: ''
+  },
+  {
+    id: 'llm', nombre: { es: 'LLM / IA', en: 'LLM / AI' }, icono: 'bot',
+    titulo: { es: 'Seguridad en Modelos de Lenguaje', en: 'Language Model Security' },
+    desc: {
+      es: 'Testing de seguridad en aplicaciones que integran LLMs: prompt injection, data leakage, jailbreaks y abusos de agentes.',
+      en: 'Security testing of applications that integrate LLMs: prompt injection, data leakage, jailbreaks and agent abuse.'
+    },
+    fases: [],
+    items: [
+      { i: 'term', t: 'Prompt Injection', tag: 'LLM01', d: {
+        es: 'Directa e indirecta: override de system prompt, inyección vía datos externos.',
+        en: 'Direct and indirect: system prompt override, injection via external data.' } },
+      { i: 'unlock', t: 'Jailbreaking', tag: 'LLM01', d: {
+        es: 'Bypass de guardrails con técnicas DAN, roleplay, encoding y multi-turn.',
+        en: 'Guardrail bypass with DAN, roleplay, encoding and multi-turn techniques.' } },
+      { i: 'out', t: 'Data Exfiltration', tag: 'LLM02 · LLM07', d: {
+        es: 'Extracción de system prompt, training data, PII y contexto de otros usuarios.',
+        en: 'Extraction of the system prompt, training data, PII and other users’ context.' } },
+      { i: 'tool', t: 'Tool Abuse', tag: 'LLM06', d: {
+        es: 'Manipulación de function calling, SSRF vía tools, ejecución de código no autorizada.',
+        en: 'Function-calling manipulation, SSRF via tools, unauthorised code execution.' } },
+      { i: 'code', t: 'Insecure Output', tag: 'LLM05', d: {
+        es: 'XSS vía respuestas del modelo, SQL injection en pipelines, command injection.',
+        en: 'XSS via model responses, SQL injection in pipelines, command injection.' } },
+      { i: 'db', t: 'RAG Poisoning', tag: 'LLM04 · LLM08', d: {
+        es: 'Inyección de documentos maliciosos en knowledge bases para manipular respuestas.',
+        en: 'Injecting malicious documents into knowledge bases to manipulate responses.' } }
+    ],
+    cmd: '# OWASP Top 10 for LLM Applications 2025\nLLM01 - Prompt Injection\nLLM02 - Sensitive Information Disclosure\nLLM03 - Supply Chain\nLLM04 - Data and Model Poisoning\nLLM05 - Improper Output Handling\nLLM06 - Excessive Agency\nLLM07 - System Prompt Leakage\nLLM08 - Vector and Embedding Weaknesses\nLLM09 - Misinformation\nLLM10 - Unbounded Consumption'
+  },
+  {
+    id: 'osint', nombre: 'OSINT', icono: 'eye',
+    titulo: { es: 'Inteligencia de Fuentes Abiertas', en: 'Open-Source Intelligence' },
+    desc: {
+      es: 'Recolección y análisis de información pública sobre una organización y su superficie de exposición: dominios, personas, credenciales filtradas y huella digital.',
+      en: 'Collection and analysis of public information about an organisation and its exposure: domains, people, leaked credentials and digital footprint.'
+    },
+    fases: [
+      [{ es: 'Planificación', en: 'Planning' }, {
+        es: 'Definición del objetivo, el alcance y los límites legales y éticos del trabajo.',
+        en: 'Defining the target, the scope and the legal and ethical limits of the work.' }],
+      [{ es: 'Recolección', en: 'Collection' }, {
+        es: 'Fuentes abiertas: DNS, Certificate Transparency, buscadores, redes sociales y registros públicos.',
+        en: 'Open sources: DNS, Certificate Transparency, search engines, social media and public records.' }],
+      [{ es: 'Procesamiento', en: 'Processing' }, {
+        es: 'Normalización, deduplicación y correlación de los datos obtenidos.',
+        en: 'Normalisation, deduplication and correlation of the data collected.' }],
+      [{ es: 'Análisis', en: 'Analysis' }, {
+        es: 'Relaciones entre entidades, verificación de las fuentes y valoración del riesgo.',
+        en: 'Relationships between entities, source verification and risk assessment.' }],
+      [{ es: 'Informe', en: 'Report' }, {
+        es: 'Hallazgos verificados con su fuente, impacto y recomendaciones.',
+        en: 'Verified findings with their source, impact and recommendations.' }]
+    ],
+    items: [
+      { i: 'globe', t: { es: 'Footprinting de dominio', en: 'Domain footprinting' },
+        tag: { es: 'recon pasivo', en: 'passive recon' }, d: {
+        es: 'Subdominios, registros DNS, Certificate Transparency, rangos IP y servicios expuestos.',
+        en: 'Subdomains, DNS records, Certificate Transparency, IP ranges and exposed services.' } },
+      { i: 'people', t: 'SOCMINT', tag: { es: 'personas', en: 'people' }, d: {
+        es: 'Perfiles y relaciones en redes sociales para identificar personas clave y vectores de ingeniería social.',
+        en: 'Social media profiles and relationships to identify key people and social engineering vectors.' } },
+      { i: 'key', t: { es: 'Credenciales filtradas', en: 'Leaked credentials' }, tag: 'leaks', d: {
+        es: 'Búsqueda de correos y credenciales corporativas en filtraciones públicas y paste sites.',
+        en: 'Searching for corporate emails and credentials in public breaches and paste sites.' } },
+      { i: 'pin', t: { es: 'Geolocalización', en: 'Geolocation' }, tag: 'GEOINT', d: {
+        es: 'Verificación de ubicaciones a partir de imágenes, metadatos EXIF y referencias visuales.',
+        en: 'Verifying locations from images, EXIF metadata and visual references.' } },
+      { i: 'search', t: 'Google Dorking', tag: 'dorks', d: {
+        es: 'Operadores avanzados para localizar documentos, paneles y ficheros indexados por error.',
+        en: 'Advanced operators to find documents, panels and files indexed by mistake.' } },
+      { i: 'radar', t: { es: 'Superficie de exposición', en: 'Exposure surface' }, tag: 'ASM', d: {
+        es: 'Servicios y dispositivos expuestos a Internet localizados con Shodan y Censys.',
+        en: 'Internet-exposed services and devices located with Shodan and Censys.' } }
+    ],
+    cmd: {
+      es: '# reconocimiento pasivo\n$ theHarvester -d target.com -b crtsh,duckduckgo,bing\n$ amass enum -passive -d target.com -o subs.txt\n$ sherlock usuario_objetivo --print-found\n$ exiftool -gps:all -time:all imagen.jpg',
+      en: '# passive recon\n$ theHarvester -d target.com -b crtsh,duckduckgo,bing\n$ amass enum -passive -d target.com -o subs.txt\n$ sherlock target_user --print-found\n$ exiftool -gps:all -time:all image.jpg'
+    }
+  }
+];
+
+/* Términos que se repiten en habilidades y trayectoria (los que no estén aquí se dejan igual) */
+const TERM = {
+  'Hacking web':                 { en: 'Web hacking' },
+  'Seguridad WiFi':              { en: 'WiFi security' },
+  'Gestión de vulnerabilidades': { en: 'Vulnerability management' },
+  'Informe técnico':             { en: 'Technical report' }
+};
+const term = s => (TERM[s] && TERM[s][lang]) || s;
+
+/* Habilidades */
+const SKILLS = [
+  { titulo: { es: 'Ofensiva', en: 'Offensive' }, icono: 'target', items: ['Hacking web', 'API testing', 'GraphQL', 'LLM testing', 'Seguridad WiFi', 'Smishing', 'OSINT'] },
+  { titulo: { es: 'Herramientas', en: 'Tools' }, icono: 'tool', items: ['Burp Suite Pro', 'Kali Linux', 'Postman', 'nmap', 'nuclei', 'sqlmap', 'ffuf', 'aircrack-ng', 'hashcat', 'WiFi Pineapple', 'GoPhish', 'Microsoft Defender'] },
+  { titulo: { es: 'Metodologías', en: 'Methodologies' }, icono: 'layers', items: ['OWASP WSTG', 'OWASP Top 10', 'OWASP Top 10 LLM', 'OWISAM', 'CWE', 'Gestión de vulnerabilidades'] },
+  { titulo: { es: 'Reporting', en: 'Reporting' }, icono: 'doc', items: ['CVSS 3.1', 'Informe técnico', 'Executive summary'] }
+];
+
+/* Trayectoria. Añade fechas en "cuando" si quieres mostrarlas. */
+const TRAYECTORIA = [
+  { rol: 'Security Transformation Analyst', org: 'Accenture España', cuando: '', estado: '',
+    d: {
+      es: 'Pruebas de penetración sobre aplicaciones web y APIs, además de pruebas de seguridad sobre aplicaciones que integran modelos de lenguaje, análisis de seguridad de redes WiFi y campañas controladas de smishing.',
+      en: 'Penetration testing of web applications and APIs, as well as security testing of applications that integrate language models, WiFi network security assessments and controlled smishing campaigns.'
+    },
+    tags: ['Pentesting', 'Hacking web', 'API testing', 'LLM testing', 'Seguridad WiFi', 'Smishing'] },
+  { rol: 'Consultant I', org: 'KPMG España', cuando: '', estado: '',
+    d: {
+      es: 'Pruebas de penetración sobre aplicaciones web y APIs, incluidas APIs GraphQL, trabajos de OSINT y gestión de vulnerabilidades con Microsoft Defender.',
+      en: 'Penetration testing of web applications and APIs, including GraphQL APIs, OSINT work and vulnerability management with Microsoft Defender.'
+    },
+    tags: ['Pentesting', 'Hacking web', 'API testing', 'GraphQL', 'OSINT', 'Gestión de vulnerabilidades', 'Microsoft Defender'] }
+];
+
+/* Idiomas */
+const IDIOMAS = [
+  { idioma: { es: 'Español', en: 'Spanish' }, nivel: { es: 'Nativo', en: 'Native' } },
+  { idioma: { es: 'Inglés',  en: 'English' },  nivel: 'B2' },
+  { idioma: { es: 'Polaco',  en: 'Polish' },     nivel: 'B2' }
+];
+
+/* Certificaciones */
+const CERTS = [
+  { sigla: 'BSCP',  nombre: 'Burp Suite Certified Practitioner', emisor: 'PortSwigger', fecha: { es: 'jul. 2024', en: 'Jul 2024' } },
+  { sigla: 'eCPPT', nombre: 'Certified Professional Penetration Tester', emisor: 'INE', fecha: { es: 'ene. 2024', en: 'Jan 2024' } },
+  { sigla: 'eJPT',  nombre: 'Junior Penetration Tester', emisor: 'INE', fecha: { es: 'dic. 2023', en: 'Dec 2023' } }
+];
+
+/* Enlaces públicos. Solo se muestran los que tengan url; si no hay ninguno,
+   la sección "Encuéntrame" y su enlace en el menú no aparecen. */
+const SOCIAL = [
+  { nombre: 'LinkedIn',  url: 'https://www.linkedin.com/in/maddii/', icono: 'linkedin' },
+  { nombre: 'GitHub',    url: '', icono: 'code' },
+  { nombre: 'Bugcrowd',  url: '', icono: 'bug'  },
+  { nombre: 'HackerOne', url: '', icono: 'target' },
+  { nombre: 'Email',     url: '', icono: 'mail' }   // formato: 'mailto:tu@correo.com'
+];
+
+/* ═════════════════════════════════════════════════════════════
+   RENDER
+   ═════════════════════════════════════════════════════════════ */
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+const FINE = matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+function renderPerfil() {
+  document.getElementById('skills').innerHTML = SKILLS.map((g, k) =>
+    '<div class="skill g soft rv" style="--d:' + (k * 70) + 'ms"><h4>' + svg(g.icono, 2) + esc(tx(g.titulo)) + '</h4><div class="chips">' +
+    g.items.map(x => '<span>' + esc(term(x)) + '</span>').join('') + '</div></div>').join('');
+
+  document.getElementById('timeline').innerHTML = TRAYECTORIA.map((t, k) =>
+    '<li class="tl-item g soft rv" style="--d:' + (k * 90) + 'ms"><span class="tl-dot" aria-hidden="true"></span>' +
+    '<div class="tl-top"><h4>' + esc(t.rol) + '</h4>' + (t.cuando ? '<span class="when' + (t.estado === 'curso' ? ' curso' : '') + '">' + esc(tx(t.cuando)) + '</span>' : '') + '</div>' +
+    '<div class="org">' + esc(t.org) + '</div><p>' + esc(tx(t.d)) + '</p>' +
+    '<div class="chips">' + t.tags.map(x => '<span>' + esc(term(x)) + '</span>').join('') + '</div></li>').join('');
+
+  const certs = document.getElementById('certs');
+  if (!CERTS.length && certs) {
+    certs.closest('aside').remove();
+    document.querySelector('.tl-grid').classList.add('solo');
+  }
+  if (CERTS.length) certs.innerHTML = CERTS.map((c, k) =>
+    '<div class="cert g soft rv" style="--d:' + (k * 90) + 'ms"><div class="cert-ring"><span class="mono">' + esc(c.sigla) + '</span></div>' +
+    '<div><h4>' + esc(tx(c.nombre)) + '</h4><small>' + esc(tx(c.emisor)) + ' · ' + esc(tx(c.fecha)) + '</small>' +
+    '</div></div>').join('');
+
+  document.getElementById('langs').innerHTML = IDIOMAS.map(l =>
+    '<div class="lang g soft"><b>' + esc(tx(l.idioma)) + '</b><span>' + esc(tx(l.nivel)) + '</span></div>').join('');
+
+  const links = SOCIAL.filter(x => x.url);
+  if (links.length) {
+    document.getElementById('socialBlock').hidden = false;
+    document.getElementById('socials').innerHTML = links.map(x =>
+      '<a class="btn btn-glass" href="' + esc(x.url) + '"' + (/^https?:/.test(x.url) ? ' target="_blank" rel="noopener noreferrer"' : '') + '>' +
+      svg(x.icono, 2) + esc(x.nombre) + '</a>').join('');
+  }
+}
+
+const AREA_IDS = AREAS.map(a => a.id);
+const n2 = k => String(k + 1).padStart(2, '0');
+
+/* portada: accesos a las áreas */
+function renderHome() {
+  document.getElementById('homeChips').innerHTML = AREAS.map(a =>
+    '<a class="chip-a" href="#/area/' + a.id + '">' + svg(a.icono) + esc(tx(a.nombre)) + '</a>').join('');
+}
+
+/* índice de áreas */
+function renderIndice() {
+  document.getElementById('areaIndex').innerHTML =
+    AREAS.map((a, k) =>
+      '<a class="aidx-card g soft rv" style="--d:' + (k * 70) + 'ms" href="#/area/' + a.id + '">' +
+        '<div class="aidx-top"><div class="ico">' + svg(a.icono, 2) + '</div><span class="aidx-num">' + n2(k) + '</span></div>' +
+        '<h3>' + esc(tx(a.titulo)) + '</h3><p>' + esc(tx(a.desc)) + '</p>' +
+        '<div class="aidx-foot"><span class="n">' + a.items.length + ' ' + T('tecnicas') + (a.fases.length ? ' · ' + a.fases.length + ' ' + T('fasesN') : '') + '</span>' +
+        '<span class="go">' + T('verArea') + ' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + I.arrow + '</svg></span></div>' +
+      '</a>').join('') +
+    PRONTO.map((p, k) => {
+      const body = '<div class="aidx-top"><div class="ico">' + svg(p.icono, 2) + '</div><span class="aidx-num">' + n2(AREAS.length + k) + '</span></div>' +
+        '<h3>' + esc(tx(p.nombre)) + '</h3><p>' + esc(tx(p.d)) + '</p><div class="aidx-foot"><span class="n"></span><span class="go">' + (p.url ? T('abrir') : T('pronto')) + '</span></div>';
+      return p.url
+        ? '<a class="aidx-card g soft rv" href="' + esc(p.url) + '" target="_blank" rel="noopener noreferrer">' + body + '</a>'
+        : '<div class="aidx-card g soft rv soon" aria-disabled="true">' + body + '</div>';
+    }).join('');
+}
+
+renderPerfil(); renderHome(); renderIndice();
+
+/* detalle de un área */
+function renderArea(id) {
+  const k = AREA_IDS.indexOf(id), a = AREAS[k];
+  const prev = AREAS[(k - 1 + AREAS.length) % AREAS.length], next = AREAS[(k + 1) % AREAS.length];
+  const arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + I.arrow + '</svg>';
+  const cards = a.items.map((c, j) => {
+    const inner = '<div class="ico">' + svg(c.i, 2) + '</div><h4>' + esc(tx(c.t)) + '</h4><p>' + esc(tx(c.d)) + '</p><span class="chip">' + esc(tx(c.tag)) + '</span>';
+    return c.url
+      ? '<a class="acard g soft rv" style="--d:' + (j * 60) + 'ms" href="' + esc(c.url) + '" target="_blank" rel="noopener noreferrer">' + inner + '</a>'
+      : '<article class="acard g soft rv" style="--d:' + (j * 60) + 'ms">' + inner + '</article>';
+  }).join('');
+  const fases = a.fases.length
+    ? '<div class="blk"><div class="blk-head"><h3 class="col-title mono">' + T('metodo') + '</h3></div><ol class="stepper">' +
+      a.fases.map((f, j) => '<li class="g soft rv" style="--d:' + (j * 70) + 'ms"><div class="st-n">' + (j + 1) + '</div><h4>' + esc(tx(f[0])) + '</h4><p>' + esc(tx(f[1])) + '</p></li>').join('') +
+      '</ol></div>'
+    : '';
+  const view = document.getElementById('areaView');
+  view.innerHTML =
+    '<a class="back" href="#/areas"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>' + T('todas') + '</a>' +
+    '<header class="ad-head g">' +
+      '<div class="ring" aria-hidden="true"><div class="ring-glow"><div class="ring-arc"></div></div>' +
+        '<div class="ring-core"><div><b>' + a.items.length + '</b><span>' + T('tecnicas') + '</span></div></div></div>' +
+      '<div><span class="tag">// ' + T('area') + ' ' + n2(k) + ' · ' + esc(tx(a.nombre)) + '</span><h2 id="areaTitle">' + esc(tx(a.titulo)) + '</h2><p>' + esc(tx(a.desc)) + '</p></div>' +
+    '</header>' + fases +
+    '<div class="blk"><div class="blk-head"><h3 class="col-title mono">' + T('tecnicasH') + '</h3></div>' +
+      '<div class="cards">' + cards + '</div></div>' +
+    '<nav class="pager">' +
+      '<a class="btn btn-glass" href="#/area/' + prev.id + '"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M11 18l-6-6 6-6"/></svg>' + esc(tx(prev.nombre)) + '</a>' +
+      '<a class="btn btn-primary" href="#/area/' + next.id + '">' + esc(tx(next.nombre)) + arrow + '</a>' +
+    '</nav>';
+  view.querySelectorAll('.rv').forEach(el => io.observe(el));
+}
+
+/* cambio de idioma: textos fijos + todo lo generado, sin recargar */
+function cambiarIdioma(l) {
+  if (!LANGS.includes(l) || l === lang) return;
+  lang = l;
+  try { localStorage.setItem('bm-lang', l); } catch (e) {}
+  aplicarTextos();
+  renderPerfil(); renderHome(); renderIndice();
+  const r = ruta();
+  if (r.v === 'area') renderArea(r.id);
+  document.querySelectorAll('.rv:not(.in)').forEach(el => io.observe(el));
+  ponerTitulo(r);
+  bindTilt();
+  document.dispatchEvent(new CustomEvent('idioma'));
+}
+
+/* selector de idioma */
+(function selector() {
+  const btn = document.getElementById('langBtn'), menu = document.getElementById('langMenu');
+  if (!btn || !menu) return;
+  const cerrar = () => { menu.hidden = true; btn.setAttribute('aria-expanded', 'false'); };
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const abrir = menu.hidden; menu.hidden = !abrir; btn.setAttribute('aria-expanded', String(abrir));
+    if (abrir) (menu.querySelector('[aria-checked="true"]') || menu.querySelector('button')).focus();
+  });
+  menu.addEventListener('click', e => {
+    const b = e.target.closest('[data-lang]'); if (!b) return;
+    cambiarIdioma(b.dataset.lang); cerrar(); btn.focus();
+  });
+  addEventListener('click', e => { if (!menu.hidden && !e.target.closest('.lang-sw')) cerrar(); });
+  addEventListener('keydown', e => { if (e.key === 'Escape' && !menu.hidden) { cerrar(); btn.focus(); } });
+})();
+
+/* ═════════════════════════════════════════════════════════════
+   ENRUTADOR: una vista cada vez (#/ · #/perfil · #/areas · #/area/web · #/trayectoria)
+   ═════════════════════════════════════════════════════════════ */
+function ruta() {
+  const h = location.hash.replace(/^#\/?/, '');
+  if (AREA_IDS.includes(h)) return { v: 'area', id: h };               /* enlaces antiguos tipo #web */
+  const [v, id] = h.split('/');
+  if (v === 'area' && AREA_IDS.includes(id)) return { v: 'area', id };
+  if (['perfil', 'areas', 'trayectoria'].includes(v)) return { v };
+  return { v: 'home' };
+}
+function ponerTitulo(r) {
+  document.title = r.v === 'area' ? tx(AREAS[AREA_IDS.indexOf(r.id)].nombre) + ' · Magdalena A. Gil' : tx(TITULOS[r.v]);
+}
+let primera = true;
+function mostrar() {
+  const r = ruta();
+  if (r.v === 'area') renderArea(r.id);
+  document.querySelectorAll('.view').forEach(x => x.classList.toggle('on', x.dataset.view === r.v));
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.toggle('on', a.dataset.nav === (r.v === 'area' ? 'areas' : r.v)));
+  ponerTitulo(r);
+  if (!primera) scrollTo({ top: 0, behavior: 'instant' });
+  if (!primera && !REDUCED) {
+    const h = r.v === 'area' ? document.getElementById('areaTitle') : document.querySelector('.view.on .sh h2');
+    if (h) scramble(h);
+  }
+  primera = false;
+  bindTilt();
+  onScroll();
+}
+
+/* ═════════════════════════════════════════════════════════════
+   ROL CON EFECTO TECLEO
+   ═════════════════════════════════════════════════════════════ */
+(function typed() {
+  const el = document.getElementById('typed');
+  if (!el || REDUCED) return;
+  const ROLES = () => T('roles');
+  let r = 0, i = ROLES()[0].length, borrando = true;
+  setTimeout(function step() {
+    const R = ROLES(); if (r >= R.length) r = 0;
+    const w = R[r]; if (i > w.length) i = w.length;
+    if (borrando) {
+      el.textContent = w.slice(0, --i);
+      if (i <= 0) { i = 0; borrando = false; r = (r + 1) % R.length; }
+      setTimeout(step, 45);
+    } else {
+      el.textContent = R[r].slice(0, ++i);
+      if (i >= R[r].length) { borrando = true; setTimeout(step, 1900); }
+      else setTimeout(step, 85);
+    }
+  }, 2600);
+})();
+
+/* ═════════════════════════════════════════════════════════════
+   ARRANQUE
+   ═════════════════════════════════════════════════════════════ */
+(function boot() {
+  const el = document.getElementById('boot');
+  const log = document.getElementById('bootLog');
+  const finish = () => { el.classList.add('done'); setTimeout(() => el.remove(), 900); };
+  if (REDUCED) { el.remove(); return; }
+  const L = ['$ init liquid_glass --v 2.0', '  [<b>ok</b>] handshake TLS 1.3', '  [<b>ok</b>] ' + T('bootLoad'), '  [<b>ok</b>] montando /portfolio', '$ ready.'];
+  requestAnimationFrame(() => { document.getElementById('bootBar').style.width = '100%'; });
+  let i = 0;
+  const t = setInterval(() => { if (i < L.length) log.innerHTML += L[i++] + '\n'; }, 220);
+  const end = setTimeout(() => { clearInterval(t); finish(); }, 1350);
+  const skip = () => { clearTimeout(end); clearInterval(t); finish(); };
+  addEventListener('click', skip, { once: true });
+  addEventListener('keydown', skip, { once: true });
+})();
+
+/* ═════════════════════════════════════════════════════════════
+   FONDO: red de nodos + grano
+   ═════════════════════════════════════════════════════════════ */
+(function net() {
+  const g = document.getElementById('grain');
+  if (g && !REDUCED) {
+    const c = document.createElement('canvas'); c.width = c.height = 110;
+    const x = c.getContext('2d'), d = x.createImageData(110, 110);
+    for (let k = 0; k < d.data.length; k += 4) { const v = Math.random() * 255 | 0; d.data[k] = d.data[k+1] = d.data[k+2] = v; d.data[k+3] = 255; }
+    x.putImageData(d, 0, 0); g.style.backgroundImage = 'url(' + c.toDataURL() + ')';
+  }
+  const cv = document.getElementById('net');
+  if (!cv || REDUCED) return;
+  const ctx = cv.getContext('2d');
+  const COL = [[0,217,255],[0,217,255],[139,123,255],[255,79,174]];
+  let W, H, N = [], P = [], run = true, LINK = 140, last = 0;
+  function size() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = document.documentElement.clientWidth; H = innerHeight;
+    cv.width = W * dpr; cv.height = H * dpr; cv.style.width = W + 'px'; cv.style.height = H + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const small = W < 760; LINK = small ? 115 : 140;
+    const n = Math.min(small ? 24 : 58, Math.round(W * H / (small ? 34000 : 24000)));
+    N = Array.from({ length: n }, () => ({ x: Math.random() * W, y: Math.random() * H, vx: (Math.random() - .5) * .2, vy: (Math.random() - .5) * .2, r: Math.random() * 1.5 + .8, c: COL[Math.random() * COL.length | 0] }));
+    P = [];
+  }
+  function frame(now) {
+    if (!run) return;
+    ctx.clearRect(0, 0, W, H);
+    for (const n of N) { n.x += n.vx; n.y += n.vy; if (n.x < -20) n.x = W + 20; if (n.x > W + 20) n.x = -20; if (n.y < -20) n.y = H + 20; if (n.y > H + 20) n.y = -20; }
+    for (let i = 0; i < N.length; i++) for (let j = i + 1; j < N.length; j++) {
+      const a = N[i], b = N[j], dx = a.x - b.x, dy = a.y - b.y, d2 = dx * dx + dy * dy;
+      if (d2 > LINK * LINK) continue;
+      ctx.strokeStyle = 'rgba(' + a.c + ',' + (1 - Math.sqrt(d2) / LINK) * .28 + ')';
+      ctx.lineWidth = .7; ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+    }
+    for (const n of N) { ctx.fillStyle = 'rgba(' + n.c + ',.8)'; ctx.beginPath(); ctx.arc(n.x, n.y, n.r, 0, 7); ctx.fill(); }
+    if (now - last > 320 && P.length < 10 && N.length > 1) {
+      last = now; const a = Math.random() * N.length | 0;
+      let b = -1, bd = LINK;
+      N.forEach((m, k) => { const d = Math.hypot(m.x - N[a].x, m.y - N[a].y); if (k !== a && d < bd && Math.random() < .5) { bd = d; b = k; } });
+      if (b >= 0) P.push({ a, b, t: 0, s: Math.random() * .012 + .006, c: N[a].c });
+    }
+    for (let k = P.length - 1; k >= 0; k--) {
+      const p = P[k]; p.t += p.s; if (p.t >= 1) { P.splice(k, 1); continue; }
+      const A = N[p.a], B = N[p.b], x = A.x + (B.x - A.x) * p.t, y = A.y + (B.y - A.y) * p.t, f = Math.sin(p.t * Math.PI);
+      ctx.shadowBlur = 12; ctx.shadowColor = 'rgb(' + p.c + ')';
+      ctx.fillStyle = 'rgba(255,255,255,' + .9 * f + ')'; ctx.beginPath(); ctx.arc(x, y, 1.9, 0, 7); ctx.fill(); ctx.shadowBlur = 0;
+    }
+    requestAnimationFrame(frame);
+  }
+  let rt; addEventListener('resize', () => { clearTimeout(rt); rt = setTimeout(size, 180); });
+  document.addEventListener('visibilitychange', () => { if (document.hidden) run = false; else if (!run) { run = true; requestAnimationFrame(frame); } });
+  size(); requestAnimationFrame(frame);
+})();
+
+/* ═════════════════════════════════════════════════════════════
+   MOTION: reveals · scroll · parallax · tilt · cursor · nav activa
+   ═════════════════════════════════════════════════════════════ */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in'); io.unobserve(e.target);
+  const h = e.target.matches('.sh') ? e.target.querySelector('h2') : null;
+  if (h && !REDUCED) scramble(h);
+}), { threshold: .12, rootMargin: '0px 0px -6% 0px' });
+document.querySelectorAll('.rv').forEach(el => io.observe(el));
+
+function scramble(el) {
+  /* el texto bueno se guarda la primera vez: aunque se lance dos veces
+     seguidas, la segunda nunca toma como "final" un texto a medio desordenar */
+  if (!el.dataset.txt) el.dataset.txt = el.textContent;
+  const text = el.dataset.txt, G = '!<>-_/[]{}=+*^?#01ABCDEF$%&';
+  const id = el._sid = (el._sid || 0) + 1;
+  const Q = [...text].map((ch, i) => ({ ch, s: Math.floor(i * .22), e: Math.floor(i * .22) + 3 + Math.random() * 4, cur: '' }));
+  let f = 0;
+  (function run() {
+    if (el._sid !== id) return;            /* hay una ejecución más nueva */
+    let out = '', done = 0;
+    for (const q of Q) {
+      if (f >= q.e) { out += q.ch; done++; }
+      else if (f >= q.s && q.ch.trim()) { if (!q.cur || f % 2 === 0) q.cur = G[Math.random() * G.length | 0]; out += q.cur; }
+      else out += q.ch;
+    }
+    el.textContent = out;
+    if (done === Q.length) { el.textContent = text; return; }
+    f++; requestAnimationFrame(run);
+  })();
+}
+
+/* barra de progreso + parallax del personaje */
+const bar = document.querySelector('.scroll-bar');
+const heroChar = document.getElementById('heroChar');
+let tick = false;
+function onScroll() {
+  const y = scrollY, max = document.documentElement.scrollHeight - innerHeight;
+  bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(y / max, 1) : 0) + ')';
+  if (!REDUCED && heroChar && y < innerHeight * 1.4) {
+    heroChar.style.transform = 'translate3d(0,' + (y * .14) + 'px,0) scale(' + (1 + Math.min(y / innerHeight, 1) * .05) + ')';
+  }
+  tick = false;
+}
+addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(onScroll); } }, { passive: true });
+onScroll();
+
+
+
+/* tarjetas de área: inclinación 3D sutil */
+function bindTilt() {
+  if (REDUCED || !FINE) return;
+  document.querySelectorAll('.view.on .acard:not([data-tilt]), .view.on .aidx-card:not([data-tilt])').forEach(c => {
+    c.dataset.tilt = 1;
+    c.addEventListener('mousemove', e => {
+      const r = c.getBoundingClientRect(), px = (e.clientX - r.left) / r.width, py = (e.clientY - r.top) / r.height;
+      c.classList.add('tilt');
+      c.style.transform = 'perspective(900px) rotateX(' + ((.5 - py) * 7) + 'deg) rotateY(' + ((px - .5) * 9) + 'deg) translateZ(10px)';
+    });
+    c.addEventListener('mouseleave', () => { c.classList.remove('tilt'); c.style.transform = ''; });
+  });
+}
+addEventListener('hashchange', mostrar);
+mostrar();
+
+/* ═════════════════════════════════════════════════════════════
+   ASISTENTE IA — responde solo con los datos de esta página
+   ═════════════════════════════════════════════════════════════ */
+(async function asistente() {
+  if (!window.claude || typeof window.claude.use !== 'function') return;   /* fuera de Claude: no aparece */
+  const sample = await window.claude.use('sample');
+  if (!sample) return;
+
+  const fab = document.getElementById('aiFab'), panel = document.getElementById('aiPanel');
+  const log = document.getElementById('aiLog'), form = document.getElementById('aiForm');
+  const input = document.getElementById('aiIn'), send = document.getElementById('aiSend');
+  const turns = [];               /* conversación que guarda la página (Claude no recuerda nada) */
+  let ctl = null, busy = false, off = false;
+
+  function contexto() {
+    const L = [];
+    L.push('Nombre: Magdalena A. Gil, conocida como Bl4ckmuffin. Rol: Penetration Tester / Ethical Hacker.');
+    L.push('Resumen: ' + [...document.querySelectorAll('.about-txt p')].map(p => p.textContent.trim()).join(' '));
+    L.push('Experiencia:'); TRAYECTORIA.forEach(t => L.push('- ' + t.rol + ' en ' + t.org + (t.cuando ? ' (' + tx(t.cuando) + ')' : '') + ': ' + tx(t.d)));
+    L.push('Certificaciones:'); CERTS.forEach(c => L.push('- ' + c.sigla + ' (' + tx(c.nombre) + '), ' + tx(c.emisor) + ', ' + tx(c.fecha)));
+    L.push('Idiomas: ' + IDIOMAS.map(i => tx(i.idioma) + ' (' + tx(i.nivel) + ')').join(', '));
+    L.push('Habilidades:'); SKILLS.forEach(g => L.push('- ' + tx(g.titulo) + ': ' + g.items.map(term).join(', ')));
+    L.push('Áreas de trabajo:');
+    AREAS.forEach(a => {
+      L.push('- ' + tx(a.titulo) + ': ' + tx(a.desc));
+      if (a.fases.length) L.push('  Fases: ' + a.fases.map(f => tx(f[0])).join(' → '));
+      L.push('  Técnicas: ' + a.items.map(i => tx(i.t) + ' (' + tx(i.d) + ')').join('; '));
+    });
+    const li = SOCIAL.find(x => x.nombre === 'LinkedIn' && x.url);
+    if (li) L.push('LinkedIn: ' + li.url);
+    return L.join('\n');
+  }
+  const REGLAS = () =>
+    'Eres el asistente del portfolio profesional de Magdalena A. Gil (aka Bl4ckmuffin), pentester. Respondes a visitantes de la web ' +
+    'sobre su perfil, experiencia, certificaciones, habilidades y áreas de trabajo.\n' +
+    'Reglas:\n' +
+    '- Usa SOLO los datos de abajo para hablar de ella. No inventes fechas, empresas, clientes, cifras ni certificaciones. ' +
+    'Si algo no aparece, dilo con naturalidad, sin más.\n' +
+    '- No menciones ni enlaces su LinkedIn salvo que el visitante pregunte expresamente cómo contactarla o por sus redes o perfiles.\n' +
+    '- Habla de ella en tercera persona: tú no eres Magdalena A. Gil.\n' +
+    '- Responde en el idioma en que escriba el visitante; si no está claro, en el idioma de la página (' + ({ es: 'español', en: 'inglés' }[lang]) + '). Breve (2 a 5 frases), claro y profesional.\n' +
+    '- Preguntas generales de ciberseguridad: responde en pocas líneas y relaciónalas con sus áreas cuando encaje.\n' +
+    '- No des instrucciones paso a paso para atacar sistemas reales ni ayudes con actividades no autorizadas.\n' +
+    '- No hables de clientes concretos ni de proyectos confidenciales.\n' +
+    '- Texto plano: sin Markdown, sin asteriscos ni almohadillas; usa saltos de línea si hace falta.\n\n' +
+    'DATOS DEL PERFIL:\n';
+
+  const burbuja = (cls, txt) => { const d = document.createElement('div'); d.className = 'msg ' + cls; d.textContent = txt; log.appendChild(d); log.scrollTop = log.scrollHeight; return d; };
+
+  function saludo() {
+    burbuja('bot', T('aiHi'));
+    const s = document.createElement('div'); s.className = 'sugs';
+    T('aiSugs').forEach(q => {
+      const b = document.createElement('button'); b.type = 'button'; b.textContent = q;
+      b.onclick = () => { s.remove(); preguntar(q); };
+      s.appendChild(b);
+    });
+    log.appendChild(s);
+  }
+
+  function abrir() {
+    panel.classList.add('on'); panel.setAttribute('aria-hidden', 'false');
+    fab.classList.add('open'); fab.setAttribute('aria-expanded', 'true');
+    if (!log.children.length) saludo();
+    setTimeout(() => input.focus(), 250);
+  }
+  function cerrar() {
+    panel.classList.remove('on'); panel.setAttribute('aria-hidden', 'true');
+    fab.classList.remove('open'); fab.setAttribute('aria-expanded', 'false');
+    fab.focus();
+  }
+  fab.addEventListener('click', abrir);
+  document.getElementById('aiClose').addEventListener('click', cerrar);
+  addEventListener('keydown', e => { if (e.key === 'Escape' && panel.classList.contains('on')) cerrar(); });
+
+  const ajustar = () => { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 120) + 'px'; send.disabled = off || (!busy && !input.value.trim()); };
+  input.addEventListener('input', ajustar);
+  input.addEventListener('keydown', e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); form.requestSubmit(); } });
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    if (busy) { ctl?.abort(); return; }                     /* durante una respuesta, el botón es "parar" */
+    const q = input.value.trim(); if (!q) return;
+    input.value = ''; ajustar(); preguntar(q);
+  });
+
+  const ICON_SEND = send.innerHTML;
+  const ICON_STOP = '<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="6" width="12" height="12" rx="2.5"/></svg>';
+  function modo(b) { busy = b; send.innerHTML = b ? ICON_STOP : ICON_SEND; send.setAttribute('aria-label', b ? T('aiStop') : T('aiSend')); ajustar(); }
+
+  const AVISO = {
+    not_granted:         { es: 'No se ha permitido el asistente en esta vista.', en: 'The assistant has not been allowed in this view.' },
+    sampling_disabled:   { es: 'El asistente no está disponible para esta cuenta.', en: 'The assistant is not available for this account.' },
+    not_declared:        { es: 'El asistente no está disponible.', en: 'The assistant is not available.' },
+    capability_disabled: { es: 'El asistente no está disponible aquí.', en: 'The assistant is not available here.' },
+    capability_removed:  { es: 'El asistente no está disponible en esta versión de la app.', en: 'The assistant is not available in this version of the app.' },
+    rate_limited:        { es: 'Demasiadas preguntas seguidas. Prueba de nuevo en un rato.', en: 'Too many questions in a row. Try again in a while.' },
+    session_expired:     { es: 'Tu sesión ha caducado: vuelve a iniciar sesión.', en: 'Your session has expired: please sign in again.' },
+    refused:             { es: 'No puedo responder a eso. Prueba a preguntarlo de otra forma.', en: 'I can’t answer that. Try asking it another way.' },
+    empty_completion:    { es: 'No he obtenido respuesta. Prueba a reformular la pregunta.', en: 'I got no answer. Try rephrasing the question.' },
+    prompt_too_large:    { es: 'La conversación es demasiado larga. Recarga la página para empezar de nuevo.', en: 'The conversation is too long. Reload the page to start again.' }
+  };
+  const PERMANENTE = ['not_granted', 'sampling_disabled', 'not_declared', 'capability_disabled', 'capability_removed'];
+
+  async function preguntar(q) {
+    if (busy || off) return;
+    log.querySelector('.sugs')?.remove();
+    burbuja('me', q);
+    turns.push({ role: 'user', content: q });
+    while (turns.length > 12) turns.splice(0, 2);           /* solo los últimos intercambios */
+    const b = burbuja('bot wait', T('aiWait'));
+    ctl = new AbortController(); modo(true);
+    try {
+      const { text, truncated } = await sample(
+        [{ role: 'user', content: REGLAS() + contexto() }, ...turns],
+        { cache: false, modelTier: 'quick', signal: ctl.signal,
+          onText: ({ text }) => { b.classList.remove('wait'); b.textContent = text; log.scrollTop = log.scrollHeight; } });
+      b.classList.remove('wait'); b.textContent = text;
+      turns.push({ role: 'assistant', content: text });
+      if (truncated) burbuja('note', T('aiCut'));
+    } catch (err) {
+      const code = err && err.code;
+      if (err && err.text) { b.classList.remove('wait'); b.textContent = err.text; turns.push({ role: 'assistant', content: err.text }); }
+      else b.remove();
+      if (code !== 'cancelled') burbuja('note', tx(AVISO[code]) || T('aiFail'));
+      if (PERMANENTE.includes(code)) { off = true; input.disabled = true; input.placeholder = T('aiOff'); input.removeAttribute('data-i18n-ph'); }
+    } finally {
+      modo(false); log.scrollTop = log.scrollHeight;
+    }
+  }
+
+  /* al cambiar de idioma, si aún no se ha preguntado nada, el saludo se rehace */
+  document.addEventListener('idioma', () => {
+    if (turns.length || busy) return;
+    log.innerHTML = '';
+    if (panel.classList.contains('on')) saludo();
+  });
+
+  fab.hidden = false;
+})();
+
+/* cursor retículo */
+(function cursor() {
+  if (!FINE) return;
+  const root = document.documentElement;
+  const dot = document.getElementById('curDot'), ring = document.getElementById('curRing');
+  root.classList.add('has-cur');
+  const LOCK = 'a,button,input,textarea,select,label,.acard';
+  addEventListener('mousemove', e => {
+    /* punto y visor en el mismo sitio, sin retraso: siempre concéntricos */
+    /* se posicionan con 'translate' (no con 'transform'): así el agrandado
+       del punto en hover (scale) no multiplica también su posición */
+    const t = e.clientX + 'px ' + e.clientY + 'px';
+    dot.style.translate = t;
+    ring.style.translate = t;
+    root.classList.add('cur-in');
+    document.body.classList.toggle('lock', !!(e.target instanceof Element && e.target.closest(LOCK)));
+  }, { passive: true });
+  addEventListener('mousedown', () => document.body.classList.add('down'));
+  addEventListener('mouseup', () => document.body.classList.remove('down'));
+  /* al salir de la ventana (o del panel) se oculta; al volver reaparece */
+  document.addEventListener('mouseleave', () => root.classList.remove('cur-in'));
+  document.documentElement.addEventListener('mouseleave', () => root.classList.remove('cur-in'));
+})();
+</script>
+</body>
+</html>
