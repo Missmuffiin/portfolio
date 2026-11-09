@@ -19,7 +19,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═════════════════════════════════════════════════════════════
-   BL4CKMUFFIN 2.0 — LIQUID GLASS
+   BL4CKMUFFIN 0.1 — LIQUID GLASS
    ═════════════════════════════════════════════════════════════ */
 @property --ang { syntax: '<angle>'; inherits: false; initial-value: 0deg; }
 
@@ -865,7 +865,7 @@ body.down #curRing { width: 30px; height: 30px; margin: -15px 0 0 -15px; }
 </main>
 
 <footer>
-  <b>&gt; bl4ckmuffin_</b> · Ethical Hacking · v2.0
+  <b>&gt; bl4ckmuffin_</b> · Ethical Hacking
 </footer>
 
 <!-- ══ ASISTENTE IA (solo aparece si la página puede hablar con Claude) ══ -->
@@ -911,6 +911,7 @@ const tx = v => (v && typeof v === 'object' && !Array.isArray(v) && 'es' in v) ?
 const UI = {
   skip:      { es: '[ click o tecla para saltar ]', en: '[ click or press a key to skip ]' },
   bootLoad:  { es: 'cargando perfil', en: 'loading profile' },
+  bootMount: { es: 'montando /portfolio', en: 'mounting /portfolio' },
   navHome:   { es: 'Inicio', en: 'Home' },
   navPerfil: { es: 'Perfil', en: 'Profile' },
   navAreas:  { es: 'Áreas', en: 'Areas' },
@@ -1495,7 +1496,7 @@ function mostrar() {
   const log = document.getElementById('bootLog');
   const finish = () => { el.classList.add('done'); setTimeout(() => el.remove(), 900); };
   if (REDUCED) { el.remove(); return; }
-  const L = ['$ init liquid_glass --v 2.0', '  [<b>ok</b>] handshake TLS 1.3', '  [<b>ok</b>] ' + T('bootLoad'), '  [<b>ok</b>] montando /portfolio', '$ ready.'];
+  const L = ['$ init liquid_glass --v 0.1', '  [<b>ok</b>] handshake TLS 1.3', '  [<b>ok</b>] ' + T('bootLoad'), '  [<b>ok</b>] ' + T('bootMount'), '$ ready.'];
   requestAnimationFrame(() => { document.getElementById('bootBar').style.width = '100%'; });
   let i = 0;
   const t = setInterval(() => { if (i < L.length) log.innerHTML += L[i++] + '\n'; }, 220);
